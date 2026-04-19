@@ -38,6 +38,83 @@ npx hyperframes preview    # http://localhost:3002
 
 O Studio recarrega automaticamente ao salvar o arquivo. Varra a timeline, inspecione cenas, mude cores, veja re-renderizar ao vivo.
 
+## Como rodar os exemplos passo a passo
+
+Guia prático para quem está começando do zero com o Hyperframes.
+
+### 1. Instalar dependências (uma vez só, na raiz)
+
+```bash
+cd cchyperframes
+npm install
+```
+
+### 2. Verificar o ambiente
+
+Confirma se Node 20+, FFmpeg e Chrome estão instalados e acessíveis:
+
+```bash
+npx hyperframes doctor
+```
+
+### 3. Entrar num projeto
+
+Cada pasta em `video-projects/` é um projeto independente com seu próprio `index.html`, `assets/` e `compositions/`.
+
+```bash
+cd video-projects/may-shorts-19      # ou qualquer outro projeto
+```
+
+### 4. Preview ao vivo no Studio (hot reload)
+
+```bash
+npx hyperframes preview              # abre http://localhost:3002
+```
+
+O Studio recarrega automaticamente ao salvar qualquer arquivo. Varra a timeline, mude cores, teste animações em tempo real.
+
+### 5. Lint antes de renderizar
+
+```bash
+npx hyperframes lint
+```
+
+Zero erros antes de partir para o render. Warnings você pode sobreviver com.
+
+### 6. Render rápido de rascunho (1–3 min, pixelado)
+
+```bash
+npx hyperframes render --quality draft --output renders/draft.mp4
+```
+
+Use para validação rápida de pacing e sincronia.
+
+### 7. Render final (1080p visualmente lossless)
+
+```bash
+npx hyperframes render --quality standard --output renders/final.mp4
+```
+
+Este é o render que se entrega.
+
+### Por onde começar (ordem recomendada)
+
+| Nível | Projeto | Por quê |
+|---|---|---|
+| **Iniciante** | `claude-edit-intro` | Intro estilo promo com mínimo hardcoding de marca — template inicial fácil de entender. |
+| **Polido** | `may-shorts-19` | Vertical TikTok com talking-head + motion graphics + legendas karaokê. A skill `/short-form-video` foi escrita em torno dele. |
+| **Produto SaaS** | `clickup-demo` | Demo de 60s com uso pesado de blocos do registry (x-post, ui-3d-reveal). Mostra a curva de iteração. |
+| **Motion avançado** | `linear-promo-30s` | Promo de 30s na estética Infinite Payments. Entregue como draft — terminá-lo é um bom exercício. |
+
+Abra o `final.mp4` de cada projeto primeiro para ver o alvo, depois o `index.html` lado a lado para entender como foi construído.
+
+### Dicas importantes
+
+- **Sempre rode os comandos de dentro da pasta do projeto** (não da raiz do workspace). A CLI lê `hyperframes.json` e `meta.json` do diretório atual.
+- **Leia `MOTION_PHILOSOPHY.md`** antes de brainstormar sua primeira cena — as 10 Leis (seção 0) e o checklist pré-voo (seção 4) são o que separa "renderizou" de "está bom".
+- **Se o Studio travar em 0s**, force refresh no navegador (Ctrl+Shift+R) ou abra uma sub-composição específica: `http://localhost:3002/?comp=<sub-comp-id>`.
+- **Se um render falhar no meio**, rode `npx hyperframes doctor` para ver o que está faltando.
+
 ## Estrutura do repositório
 
 ```
