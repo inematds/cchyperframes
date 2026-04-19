@@ -48,10 +48,67 @@
 
   <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 
+    <!-- CASOS DE ESTUDO -->
+    <section id="casos-de-estudo" class="mb-16">
+      <div class="bg-gradient-to-br from-purple-900/40 via-dark-800 to-dark-800 rounded-xl border border-purple-500/30 p-6 md:p-8">
+        <h2 class="text-2xl font-bold mb-2 flex items-center"><span class="mr-3">🎥</span> Casos de estudo em vídeo</h2>
+        <p class="text-neutral-300 mb-6">Dois promos já entregues do kit. Assista primeiro, depois volte e leia cada seção abaixo com os exemplos na cabeça.</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <h3 class="font-semibold text-purple-400 mb-2">clickup-demo (60s)</h3>
+            <p class="text-xs text-neutral-400 mb-3">Demo SaaS com uso pesado de blocos do registry e shader transitions.</p>
+            <video controls preload="metadata" class="w-full rounded-lg border border-dark-600" poster="frames/clickup-2s.jpg">
+              <source src="../../video-projects/clickup-demo/final.mp4" type="video/mp4">
+              Seu navegador não suporta vídeo HTML5.
+            </video>
+          </div>
+          <div>
+            <h3 class="font-semibold text-purple-400 mb-2">linear-promo-30s (30s)</h3>
+            <p class="text-xs text-neutral-400 mb-3">Promo estilo Linear/Infinite Payments — tight cuts, chrome typography, signature transitions.</p>
+            <video controls preload="metadata" class="w-full rounded-lg border border-dark-600" poster="frames/linear-2s.jpg">
+              <source src="../../video-projects/linear-promo-30s/final.mp4" type="video/mp4">
+              Seu navegador não suporta vídeo HTML5.
+            </video>
+          </div>
+        </div>
+
+        <div class="mt-6 p-4 bg-dark-800/50 rounded-lg text-sm text-neutral-300">
+          <strong class="text-purple-400">Código-fonte:</strong> ambos os projetos estão em
+          <code class="bg-dark-700 px-2 py-0.5 rounded text-xs">video-projects/clickup-demo/</code> e
+          <code class="bg-dark-700 px-2 py-0.5 rounded text-xs">video-projects/linear-promo-30s/</code>.
+          Abra o <code class="bg-dark-700 px-2 py-0.5 rounded text-xs">index.html</code> para ver como foi construído.
+        </div>
+      </div>
+    </section>
+
     <section id="topico-1" class="mb-16">
       <div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">1</span><h2 class="text-2xl font-bold">🏗️ Estrutura do SaaS promo</h2></div>
       <p class="text-neutral-300 mb-6 leading-relaxed">A arquitetura de <strong class="text-purple-400">5 beats</strong> vende produto em 30-60s: hook → problema → solução → prova → CTA. Quebrar sem motivo forte é desperdício de produção.</p>
       <div class="bg-gradient-to-br from-purple-900/30 to-dark-800 rounded-xl border border-purple-500/30 p-6 mb-6"><h3 class="text-lg font-semibold text-purple-400 mb-4">⏱️ Distribuição em 30s</h3><div class="space-y-3 text-sm"><div class="flex items-start space-x-3"><span class="text-purple-400 font-bold w-14">0-2s</span><p class="text-neutral-300"><strong>Hook:</strong> padrão interrompido, visual forte, pergunta.</p></div><div class="flex items-start space-x-3"><span class="text-purple-400 font-bold w-14">2-7s</span><p class="text-neutral-300"><strong>Problema:</strong> concreto, específico. Dor que o público sente.</p></div><div class="flex items-start space-x-3"><span class="text-purple-400 font-bold w-14">7-22s</span><p class="text-neutral-300"><strong>Solução:</strong> produto em ação. 2-3 features principais mostradas.</p></div><div class="flex items-start space-x-3"><span class="text-purple-400 font-bold w-14">22-27s</span><p class="text-neutral-300"><strong>Prova:</strong> logos, números, depoimento, review.</p></div><div class="flex items-start space-x-3"><span class="text-purple-400 font-bold w-14">27-30s</span><p class="text-neutral-300"><strong>CTA:</strong> URL, action verbal, outro hold.</p></div></div></div>
+
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+        <h3 class="text-lg font-semibold mb-4">🔍 Estudo de frames — clickup-demo (60s, beats dobrados)</h3>
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
+          <figure><img src="frames/clickup-2s.jpg" alt="Hook aos 2s" class="w-full rounded-lg border border-dark-600"><figcaption class="text-xs text-neutral-400 mt-2"><strong class="text-purple-400">2s · Hook</strong><br>Pattern interrupt inicial</figcaption></figure>
+          <figure><img src="frames/clickup-10s.jpg" alt="Problema aos 10s" class="w-full rounded-lg border border-dark-600"><figcaption class="text-xs text-neutral-400 mt-2"><strong class="text-purple-400">10s · Problema</strong><br>Dor do público</figcaption></figure>
+          <figure><img src="frames/clickup-25s.jpg" alt="Solução aos 25s" class="w-full rounded-lg border border-dark-600"><figcaption class="text-xs text-neutral-400 mt-2"><strong class="text-purple-400">25s · Solução</strong><br>Produto em ação</figcaption></figure>
+          <figure><img src="frames/clickup-40s.jpg" alt="Prova aos 40s" class="w-full rounded-lg border border-dark-600"><figcaption class="text-xs text-neutral-400 mt-2"><strong class="text-purple-400">40s · Prova</strong><br>Social proof, depoimentos</figcaption></figure>
+          <figure><img src="frames/clickup-55s.jpg" alt="CTA aos 55s" class="w-full rounded-lg border border-dark-600"><figcaption class="text-xs text-neutral-400 mt-2"><strong class="text-purple-400">55s · CTA</strong><br>URL + outro hold</figcaption></figure>
+        </div>
+        <p class="text-xs text-neutral-500 mt-4">Frames extraídos com <code class="bg-dark-700 px-1 rounded">ffmpeg -ss [tempo] -frames:v 1</code>.</p>
+      </div>
+
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+        <h3 class="text-lg font-semibold mb-4">🔍 Estudo de frames — linear-promo-30s (tight 30s)</h3>
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
+          <figure><img src="frames/linear-2s.jpg" alt="Hook aos 2s" class="w-full rounded-lg border border-dark-600"><figcaption class="text-xs text-neutral-400 mt-2"><strong class="text-purple-400">2s · Hook</strong></figcaption></figure>
+          <figure><img src="frames/linear-10s.jpg" alt="Problema aos 10s" class="w-full rounded-lg border border-dark-600"><figcaption class="text-xs text-neutral-400 mt-2"><strong class="text-purple-400">10s · Problema</strong></figcaption></figure>
+          <figure><img src="frames/linear-18s.jpg" alt="Solução aos 18s" class="w-full rounded-lg border border-dark-600"><figcaption class="text-xs text-neutral-400 mt-2"><strong class="text-purple-400">18s · Solução</strong></figcaption></figure>
+          <figure><img src="frames/linear-25s.jpg" alt="Prova aos 25s" class="w-full rounded-lg border border-dark-600"><figcaption class="text-xs text-neutral-400 mt-2"><strong class="text-purple-400">25s · Prova</strong></figcaption></figure>
+          <figure><img src="frames/linear-28s.jpg" alt="CTA aos 28s" class="w-full rounded-lg border border-dark-600"><figcaption class="text-xs text-neutral-400 mt-2"><strong class="text-purple-400">28s · CTA</strong></figcaption></figure>
+        </div>
+      </div>
     </section>
 
     <section id="topico-2" class="mb-16">
