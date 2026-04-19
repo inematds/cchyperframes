@@ -1,0 +1,110 @@
+<template id="03-brand-reveal-template">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600;700;800;900&display=block" rel="stylesheet" />
+
+  <div data-composition-id="03-brand-reveal" data-start="0" data-duration="2" data-width="1920" data-height="1080">
+    <div class="stage">
+      <div class="flare"></div>
+      <div class="grid-floor"></div>
+
+      <div class="lockup">
+        <div class="brand">
+          <span class="b-inema">INEMA</span><span class="b-dot">.</span><span class="b-club">CLUB</span>
+        </div>
+        <div class="shimmer"></div>
+      </div>
+
+      <div class="vignette"></div>
+      <div class="grain"></div>
+    </div>
+
+    <style>
+      [data-composition-id="03-brand-reveal"] { position: absolute; inset: 0; overflow: hidden; background: #05070b; }
+      [data-composition-id="03-brand-reveal"] .stage { position: absolute; inset: 0; }
+      [data-composition-id="03-brand-reveal"] .flare {
+        position: absolute; top: 50%; left: 50%;
+        width: 1600px; height: 1600px;
+        transform: translate(-50%, -50%) scale(0);
+        background: radial-gradient(circle, rgba(250,204,21,0.6), rgba(240,144,37,0.35) 30%, transparent 60%);
+        filter: blur(40px);
+        mix-blend-mode: screen;
+      }
+      [data-composition-id="03-brand-reveal"] .grid-floor {
+        position: absolute; inset: 0;
+        transform: perspective(900px) rotateX(62deg) translateY(30%);
+        background:
+          repeating-linear-gradient(0deg,  rgba(56,189,248,0.08) 0 1px, transparent 1px 80px),
+          repeating-linear-gradient(90deg, rgba(56,189,248,0.08) 0 1px, transparent 1px 80px);
+      }
+      [data-composition-id="03-brand-reveal"] .lockup {
+        position: absolute; top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      [data-composition-id="03-brand-reveal"] .brand {
+        font-family: "Inter", sans-serif;
+        font-weight: 900;
+        font-size: 192px;
+        letter-spacing: -0.04em;
+        line-height: 1;
+        white-space: nowrap;
+        opacity: 0;
+        transform: scale(0.85);
+      }
+      [data-composition-id="03-brand-reveal"] .b-inema {
+        background: linear-gradient(180deg, #ffffff 0%, #e0e8f0 50%, #8d9db0 100%);
+        -webkit-background-clip: text; background-clip: text;
+        -webkit-text-fill-color: transparent; color: transparent;
+        text-shadow: 0 0 60px rgba(255,255,255,0.4);
+      }
+      [data-composition-id="03-brand-reveal"] .b-dot {
+        color: #FACC15;
+        text-shadow: 0 0 40px rgba(250,204,21,0.8);
+      }
+      [data-composition-id="03-brand-reveal"] .b-club {
+        background: linear-gradient(180deg, #FACC15 0%, #f09025 100%);
+        -webkit-background-clip: text; background-clip: text;
+        -webkit-text-fill-color: transparent; color: transparent;
+        text-shadow: 0 0 60px rgba(250,204,21,0.5);
+      }
+      [data-composition-id="03-brand-reveal"] .shimmer {
+        position: absolute; top: 0; left: 0;
+        width: 300px; height: 100%;
+        background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.7) 50%, transparent 100%);
+        filter: blur(6px);
+        transform: translateX(-200%);
+        opacity: 0;
+        mix-blend-mode: screen;
+        pointer-events: none;
+      }
+      [data-composition-id="03-brand-reveal"] .vignette {
+        position: absolute; inset: 0; pointer-events: none;
+        background: radial-gradient(ellipse at center, transparent 45%, rgba(0,0,0,0.85) 95%);
+      }
+      [data-composition-id="03-brand-reveal"] .grain {
+        position: absolute; inset: 0; pointer-events: none; opacity: 0.06;
+        background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
+        background-size: 3px 3px;
+      }
+    </style>
+
+    <script>
+      (() => {
+        const SLOT = 2;
+        const tl = gsap.timeline({ paused: true });
+        const sel = (q) => `[data-composition-id="03-brand-reveal"] ${q}`;
+
+        tl.to(sel('.flare'), { scale: 1, duration: 0.3, ease: 'power3.out' }, 0);
+        tl.to(sel('.flare'), { opacity: 0.2, scale: 1.3, duration: 1.4, ease: 'power2.out' }, 0.3);
+        tl.to(sel('.brand'), { opacity: 1, scale: 1, duration: 0.6, ease: 'back.out(1.2)' }, 0.2);
+
+        tl.set(sel('.shimmer'), { opacity: 1, xPercent: -120 }, 0.8);
+        tl.to(sel('.shimmer'), { xPercent: 500, duration: 0.7, ease: 'power2.inOut' }, 0.8);
+        tl.to(sel('.shimmer'), { opacity: 0, duration: 0.1 }, 1.45);
+
+        tl.to({}, { duration: SLOT }, 0);
+        window.__timelines = window.__timelines || {};
+        window.__timelines['03-brand-reveal'] = tl;
+      })();
+    </script>
+  </div>
+</template>

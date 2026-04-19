@@ -1,0 +1,129 @@
+<template id="04-valor-template">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800&display=block" rel="stylesheet" />
+
+  <div data-composition-id="04-valor" data-start="0" data-duration="4.8" data-width="1920" data-height="1080">
+    <div class="stage">
+      <div class="bg-grid"></div>
+      <div class="topper">Portal centralizado de cursos e plataformas</div>
+
+      <div class="cards">
+        <div class="card c1">
+          <div class="idx">01</div>
+          <div class="label">Cursos</div>
+          <div class="desc">Formações práticas, do básico ao avançado</div>
+        </div>
+        <div class="card c2">
+          <div class="idx">02</div>
+          <div class="label">Trilhas</div>
+          <div class="desc">Caminhos claros para evoluir com consistência</div>
+        </div>
+        <div class="card c3">
+          <div class="idx">03</div>
+          <div class="label">Comunidade</div>
+          <div class="desc">Pessoas construindo juntas em tempo real</div>
+        </div>
+        <div class="card c4">
+          <div class="idx">04</div>
+          <div class="label">Prática</div>
+          <div class="desc">Aprender fazendo, aplicando, entregando</div>
+        </div>
+      </div>
+
+      <div class="vignette"></div>
+      <div class="grain"></div>
+    </div>
+
+    <style>
+      [data-composition-id="04-valor"] { position: absolute; inset: 0; overflow: hidden; background: #05070b; }
+      [data-composition-id="04-valor"] .stage { position: absolute; inset: 0; }
+      [data-composition-id="04-valor"] .bg-grid {
+        position: absolute; inset: 0;
+        background:
+          repeating-linear-gradient(0deg,  rgba(56,189,248,0.05) 0 1px, transparent 1px 60px),
+          repeating-linear-gradient(90deg, rgba(56,189,248,0.05) 0 1px, transparent 1px 60px);
+      }
+      [data-composition-id="04-valor"] .topper {
+        position: absolute; top: 120px; left: 50%;
+        transform: translateX(-50%);
+        font-family: "Inter", sans-serif;
+        font-weight: 500;
+        font-size: 32px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: rgba(56,189,248,0.75);
+        opacity: 0;
+      }
+      [data-composition-id="04-valor"] .cards {
+        position: absolute; top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        display: grid;
+        grid-template-columns: repeat(4, 340px);
+        gap: 32px;
+      }
+      [data-composition-id="04-valor"] .card {
+        height: 400px;
+        padding: 38px;
+        border-radius: 24px;
+        background: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
+        border: 1px solid rgba(255,255,255,0.10);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      [data-composition-id="04-valor"] .idx {
+        font-family: "Inter", sans-serif;
+        font-weight: 500;
+        font-size: 24px;
+        color: rgba(250,204,21,0.6);
+        letter-spacing: 0.1em;
+      }
+      [data-composition-id="04-valor"] .label {
+        font-family: "Inter", sans-serif;
+        font-weight: 800;
+        font-size: 64px;
+        letter-spacing: -0.02em;
+        line-height: 1;
+        background: linear-gradient(180deg, #ffffff 0%, #c0c8d4 100%);
+        -webkit-background-clip: text; background-clip: text;
+        -webkit-text-fill-color: transparent; color: transparent;
+      }
+      [data-composition-id="04-valor"] .desc {
+        font-family: "Inter", sans-serif;
+        font-weight: 500;
+        font-size: 22px;
+        line-height: 1.4;
+        color: rgba(255,255,255,0.65);
+      }
+      [data-composition-id="04-valor"] .vignette {
+        position: absolute; inset: 0; pointer-events: none;
+        background: radial-gradient(ellipse at center, transparent 45%, rgba(0,0,0,0.85) 95%);
+      }
+      [data-composition-id="04-valor"] .grain {
+        position: absolute; inset: 0; pointer-events: none; opacity: 0.07;
+        background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
+        background-size: 3px 3px;
+      }
+    </style>
+
+    <script>
+      (() => {
+        const SLOT = 4.8;
+        const tl = gsap.timeline({ paused: true });
+        const sel = (q) => `[data-composition-id="04-valor"] ${q}`;
+
+        tl.to(sel('.topper'), { opacity: 1, duration: 0.4, ease: 'power2.out' }, 0);
+        tl.to(sel('.card'), {
+          opacity: 1, y: 0, duration: 0.55, stagger: 0.15, ease: 'expo.out'
+        }, 0.2);
+        tl.to(sel('.stage'), { scale: 1.02, duration: 4.8, ease: 'none' }, 0);
+
+        tl.to({}, { duration: SLOT }, 0);
+        window.__timelines = window.__timelines || {};
+        window.__timelines['04-valor'] = tl;
+      })();
+    </script>
+  </div>
+</template>

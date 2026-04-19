@@ -1,0 +1,100 @@
+<template id="06-pilares-template">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800;900&display=block" rel="stylesheet" />
+
+  <div data-composition-id="06-pilares" data-start="0" data-duration="2.5" data-width="1920" data-height="1080">
+    <div class="stage">
+      <div class="bg-grid"></div>
+
+      <div class="pillars">
+        <div class="pillar p1"><div class="dot"></div><div class="name">IA</div></div>
+        <div class="pillar p2"><div class="dot"></div><div class="name">Automação</div></div>
+        <div class="pillar p3"><div class="dot"></div><div class="name">Agentes</div></div>
+        <div class="pillar p4"><div class="dot"></div><div class="name">Robótica</div></div>
+      </div>
+
+      <div class="topper">As tecnologias que moldam o amanhã</div>
+
+      <div class="vignette"></div>
+      <div class="grain"></div>
+    </div>
+
+    <style>
+      [data-composition-id="06-pilares"] { position: absolute; inset: 0; overflow: hidden; background: #05070b; }
+      [data-composition-id="06-pilares"] .stage { position: absolute; inset: 0; }
+      [data-composition-id="06-pilares"] .bg-grid {
+        position: absolute; inset: 0;
+        background:
+          repeating-linear-gradient(0deg,  rgba(56,189,248,0.06) 0 1px, transparent 1px 60px),
+          repeating-linear-gradient(90deg, rgba(56,189,248,0.06) 0 1px, transparent 1px 60px);
+      }
+      [data-composition-id="06-pilares"] .topper {
+        position: absolute; top: 180px; left: 50%;
+        transform: translateX(-50%);
+        font-family: "Inter", sans-serif;
+        font-weight: 500;
+        font-size: 30px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: rgba(56,189,248,0.75);
+        opacity: 0;
+      }
+      [data-composition-id="06-pilares"] .pillars {
+        position: absolute; top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        gap: 80px;
+      }
+      [data-composition-id="06-pilares"] .pillar {
+        display: flex; flex-direction: column; align-items: center;
+        gap: 24px;
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      [data-composition-id="06-pilares"] .dot {
+        width: 28px; height: 28px; border-radius: 50%;
+      }
+      [data-composition-id="06-pilares"] .p1 .dot { background: #FACC15; box-shadow: 0 0 30px rgba(250,204,21,0.7); }
+      [data-composition-id="06-pilares"] .p2 .dot { background: #38bdf8; box-shadow: 0 0 30px rgba(56,189,248,0.7); }
+      [data-composition-id="06-pilares"] .p3 .dot { background: #f09025; box-shadow: 0 0 30px rgba(240,144,37,0.7); }
+      [data-composition-id="06-pilares"] .p4 .dot { background: #a78bfa; box-shadow: 0 0 30px rgba(167,139,250,0.7); }
+
+      [data-composition-id="06-pilares"] .name {
+        font-family: "Inter", sans-serif;
+        font-weight: 800;
+        font-size: 84px;
+        letter-spacing: -0.02em;
+        line-height: 1;
+        background: linear-gradient(180deg, #ffffff 0%, #c0c8d4 100%);
+        -webkit-background-clip: text; background-clip: text;
+        -webkit-text-fill-color: transparent; color: transparent;
+      }
+
+      [data-composition-id="06-pilares"] .vignette {
+        position: absolute; inset: 0; pointer-events: none;
+        background: radial-gradient(ellipse at center, transparent 45%, rgba(0,0,0,0.85) 95%);
+      }
+      [data-composition-id="06-pilares"] .grain {
+        position: absolute; inset: 0; pointer-events: none; opacity: 0.07;
+        background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
+        background-size: 3px 3px;
+      }
+    </style>
+
+    <script>
+      (() => {
+        const SLOT = 2.5;
+        const tl = gsap.timeline({ paused: true });
+        const sel = (q) => `[data-composition-id="06-pilares"] ${q}`;
+
+        tl.to(sel('.topper'), { opacity: 1, duration: 0.4, ease: 'power2.out' }, 0);
+        tl.to(sel('.pillar'), { opacity: 1, y: 0, duration: 0.5, stagger: 0.12, ease: 'expo.out' }, 0.2);
+        tl.to(sel('.dot'), { scale: 1.4, duration: 0.4, stagger: 0.1, yoyo: true, repeat: 1, ease: 'power2.inOut' }, 1.2);
+
+        tl.to({}, { duration: SLOT }, 0);
+        window.__timelines = window.__timelines || {};
+        window.__timelines['06-pilares'] = tl;
+      })();
+    </script>
+  </div>
+</template>

@@ -1,0 +1,105 @@
+<template id="01-hook-template">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=block" rel="stylesheet" />
+
+  <div data-composition-id="01-hook" data-start="0" data-duration="4" data-width="1920" data-height="1080">
+    <div class="stage">
+      <div class="grid-floor"></div>
+      <div class="glow glow-a"></div>
+
+      <div class="headline">
+        <div class="line line-1"><span class="w">O</span> <span class="w">futuro</span></div>
+        <div class="line line-2"><span class="w">já</span> <span class="w accent">começou.</span></div>
+      </div>
+
+      <div class="sub">A inteligência artificial está mudando tudo.</div>
+
+      <div class="vignette"></div>
+      <div class="grain"></div>
+    </div>
+
+    <style>
+      [data-composition-id="01-hook"] { position: absolute; inset: 0; overflow: hidden; background: #05070b; }
+      [data-composition-id="01-hook"] .stage { position: absolute; inset: 0; }
+      [data-composition-id="01-hook"] .grid-floor {
+        position: absolute; inset: 0;
+        transform: perspective(900px) rotateX(62deg) translateY(30%);
+        background:
+          repeating-linear-gradient(0deg,  rgba(56,189,248,0.06) 0 1px, transparent 1px 80px),
+          repeating-linear-gradient(90deg, rgba(56,189,248,0.06) 0 1px, transparent 1px 80px);
+        background-color: #05070b;
+      }
+      [data-composition-id="01-hook"] .glow {
+        position: absolute; border-radius: 50%;
+        filter: blur(120px); opacity: 0;
+      }
+      [data-composition-id="01-hook"] .glow-a {
+        width: 900px; height: 900px;
+        background: radial-gradient(circle, rgba(250,204,21,0.35), transparent 60%);
+        top: -200px; left: 50%; transform: translateX(-50%);
+      }
+      [data-composition-id="01-hook"] .headline {
+        position: absolute; top: 50%; left: 50%;
+        transform: translate(-50%, -55%);
+        text-align: center;
+      }
+      [data-composition-id="01-hook"] .line {
+        font-family: "Inter", sans-serif;
+        font-weight: 800;
+        font-size: 156px;
+        letter-spacing: -0.03em;
+        line-height: 1.05;
+        color: #fff;
+      }
+      [data-composition-id="01-hook"] .line .w {
+        display: inline-block;
+        opacity: 0; transform: translateY(40px);
+      }
+      [data-composition-id="01-hook"] .line .w.accent {
+        background: linear-gradient(180deg, #FACC15 0%, #f09025 100%);
+        -webkit-background-clip: text; background-clip: text;
+        -webkit-text-fill-color: transparent; color: transparent;
+        text-shadow: 0 0 40px rgba(250,204,21,0.5);
+      }
+      [data-composition-id="01-hook"] .sub {
+        position: absolute; top: 68%; left: 50%;
+        transform: translateX(-50%);
+        font-family: "Inter", sans-serif;
+        font-weight: 400;
+        font-size: 36px;
+        color: rgba(255,255,255,0.72);
+        letter-spacing: 0.01em;
+        opacity: 0;
+      }
+      [data-composition-id="01-hook"] .vignette {
+        position: absolute; inset: 0; pointer-events: none;
+        background: radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.9) 95%);
+      }
+      [data-composition-id="01-hook"] .grain {
+        position: absolute; inset: 0; pointer-events: none; opacity: 0.08;
+        background-image:
+          radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+          radial-gradient(rgba(255,255,255,0.02) 1px, transparent 1px);
+        background-size: 3px 3px, 5px 5px;
+      }
+    </style>
+
+    <script>
+      (() => {
+        const SLOT = 4;
+        const tl = gsap.timeline({ paused: true });
+        const sel = (q) => `[data-composition-id="01-hook"] ${q}`;
+
+        tl.to(sel('.glow-a'), { opacity: 0.8, duration: 0.8, ease: 'power2.out' }, 0);
+        tl.to(sel('.line-1 .w'), { opacity: 1, y: 0, duration: 0.5, stagger: 0.08, ease: 'expo.out' }, 0.2);
+        tl.to(sel('.line-2 .w'), { opacity: 1, y: 0, duration: 0.5, stagger: 0.08, ease: 'expo.out' }, 0.6);
+        tl.to(sel('.sub'), { opacity: 1, duration: 0.5, ease: 'power2.out' }, 1.5);
+        tl.to(sel('.stage'), { scale: 1.03, duration: 3, ease: 'none' }, 0);
+
+        tl.to({}, { duration: SLOT }, 0);
+        window.__timelines = window.__timelines || {};
+        window.__timelines['01-hook'] = tl;
+      })();
+    </script>
+  </div>
+</template>

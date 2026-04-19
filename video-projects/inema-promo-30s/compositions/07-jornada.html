@@ -1,0 +1,97 @@
+<template id="07-jornada-template">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600;700;800;900&display=block" rel="stylesheet" />
+
+  <div data-composition-id="07-jornada" data-start="0" data-duration="3" data-width="1920" data-height="1080">
+    <div class="stage">
+      <div class="grid-floor"></div>
+      <div class="horizon"></div>
+      <div class="sun"></div>
+
+      <div class="headline">
+        <div class="line-a"><span class="w">Lidere</span> <span class="w">sua</span></div>
+        <div class="line-b"><span class="w accent">jornada.</span></div>
+      </div>
+
+      <div class="vignette"></div>
+      <div class="grain"></div>
+    </div>
+
+    <style>
+      [data-composition-id="07-jornada"] { position: absolute; inset: 0; overflow: hidden; background: #05070b; }
+      [data-composition-id="07-jornada"] .stage { position: absolute; inset: 0; }
+      [data-composition-id="07-jornada"] .grid-floor {
+        position: absolute; inset: 0;
+        transform: perspective(900px) rotateX(62deg) translateY(30%);
+        background:
+          repeating-linear-gradient(0deg,  rgba(250,204,21,0.10) 0 1px, transparent 1px 80px),
+          repeating-linear-gradient(90deg, rgba(250,204,21,0.08) 0 1px, transparent 1px 80px);
+      }
+      [data-composition-id="07-jornada"] .horizon {
+        position: absolute; top: 62%; left: 0; right: 0; height: 4px;
+        background: linear-gradient(90deg, transparent 0%, rgba(250,204,21,0.8) 50%, transparent 100%);
+        filter: blur(2px);
+        box-shadow: 0 0 30px rgba(250,204,21,0.5);
+        opacity: 0;
+      }
+      [data-composition-id="07-jornada"] .sun {
+        position: absolute;
+        top: 50%; left: 50%;
+        width: 400px; height: 400px;
+        transform: translate(-50%, -20%) scale(0.4);
+        background: radial-gradient(circle, rgba(250,204,21,0.55) 0%, rgba(240,144,37,0.25) 40%, transparent 70%);
+        filter: blur(30px);
+        opacity: 0;
+        mix-blend-mode: screen;
+      }
+      [data-composition-id="07-jornada"] .headline {
+        position: absolute; top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+      }
+      [data-composition-id="07-jornada"] .line-a,
+      [data-composition-id="07-jornada"] .line-b {
+        font-family: "Inter", sans-serif;
+        font-weight: 900;
+        font-size: 172px;
+        letter-spacing: -0.04em;
+        line-height: 1.02;
+        color: #fff;
+      }
+      [data-composition-id="07-jornada"] .w { display: inline-block; opacity: 0; transform: translateY(60px); }
+      [data-composition-id="07-jornada"] .accent {
+        background: linear-gradient(180deg, #FACC15 0%, #f09025 100%);
+        -webkit-background-clip: text; background-clip: text;
+        -webkit-text-fill-color: transparent; color: transparent;
+        text-shadow: 0 0 50px rgba(250,204,21,0.5);
+      }
+      [data-composition-id="07-jornada"] .vignette {
+        position: absolute; inset: 0; pointer-events: none;
+        background: radial-gradient(ellipse at center, transparent 45%, rgba(0,0,0,0.9) 95%);
+      }
+      [data-composition-id="07-jornada"] .grain {
+        position: absolute; inset: 0; pointer-events: none; opacity: 0.07;
+        background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
+        background-size: 3px 3px;
+      }
+    </style>
+
+    <script>
+      (() => {
+        const SLOT = 3;
+        const tl = gsap.timeline({ paused: true });
+        const sel = (q) => `[data-composition-id="07-jornada"] ${q}`;
+
+        tl.to(sel('.sun'), { opacity: 0.9, scale: 1, duration: 1.4, ease: 'power2.out' }, 0);
+        tl.to(sel('.horizon'), { opacity: 1, duration: 0.5, ease: 'power2.out' }, 0.3);
+        tl.to(sel('.line-a .w'), { opacity: 1, y: 0, duration: 0.5, stagger: 0.08, ease: 'expo.out' }, 0.4);
+        tl.to(sel('.line-b .w'), { opacity: 1, y: 0, duration: 0.6, stagger: 0.08, ease: 'expo.out' }, 0.9);
+        tl.to(sel('.stage'), { scale: 1.04, duration: 3, ease: 'none' }, 0);
+
+        tl.to({}, { duration: SLOT }, 0);
+        window.__timelines = window.__timelines || {};
+        window.__timelines['07-jornada'] = tl;
+      })();
+    </script>
+  </div>
+</template>
