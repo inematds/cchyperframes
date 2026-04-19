@@ -1,218 +1,218 @@
-# Hyperframes Editor — Student Edition
+# Hyperframes Editor — Edição Estudante
 
-A workbench for building motion-graphics video pipelines in **plain HTML + GSAP**, powered by [Hyperframes](https://hyperframes.heygen.com). Twelve finished video projects you can clone, scrub through, rip apart, and rebuild as your own.
+Uma bancada de trabalho para construir pipelines de vídeo motion-graphics em **HTML + GSAP puros**, alimentada pelo [Hyperframes](https://hyperframes.heygen.com). Doze projetos de vídeo finalizados que você pode clonar, varrer a timeline, destrinchar e reconstruir como seus.
 
-> This is **not** a Remotion / React / Next.js video stack. Every composition in this repo is a regular HTML file with a paused GSAP timeline attached to `window.__timelines`. The Hyperframes CLI handles lint, preview, and render.
+> Isto **não** é um stack de vídeo Remotion / React / Next.js. Cada composição neste repositório é um arquivo HTML comum com uma timeline GSAP pausada anexada a `window.__timelines`. A CLI do Hyperframes cuida de lint, preview e render.
 
 ---
 
-## Who this is for
+## Para quem é isso
 
-Students who want to learn how professional short-form and promo video gets built end-to-end — storyboard, brand system, motion graphics, audio sync, render pipeline — by reverse-engineering real projects. Every project here shipped (or almost shipped). Scrub the compositions, read the HANDOFF/STORYBOARD docs, play the `final.mp4`, then change things and see what breaks.
+Estudantes que querem aprender como vídeos promocionais e short-form profissionais são construídos de ponta a ponta — storyboard, sistema de marca, motion graphics, sincronia de áudio, pipeline de render — através de engenharia reversa de projetos reais. Todo projeto aqui entregou (ou quase entregou). Varra as composições, leia os docs de HANDOFF/STORYBOARD, assista ao `final.mp4`, depois mude coisas e veja o que quebra.
 
-## Prerequisites
+## Pré-requisitos
 
-- **Node 20+** — run `node --version` to check
-- **FFmpeg** on your `PATH` — needed for audio extraction and re-encoding
-- **Chrome (latest)** — Hyperframes renders through a headless Chromium
-- **~5 GB free disk** — node_modules is chunky; renders are bigger
-- **16 GB RAM recommended** for smooth Studio preview with multiple shader blocks
+- **Node 20+** — rode `node --version` para verificar
+- **FFmpeg** no seu `PATH` — necessário para extração e reencode de áudio
+- **Chrome (mais recente)** — Hyperframes renderiza via Chromium headless
+- **~5 GB de disco livre** — node_modules é grande; renders são maiores ainda
+- **16 GB de RAM recomendado** para preview fluido no Studio com múltiplos blocos de shader
 
-Run `npx hyperframes doctor` after `npm install` — it reports what's missing.
+Rode `npx hyperframes doctor` após `npm install` — ele reporta o que está faltando.
 
-## Quickstart
+## Início rápido
 
 ```bash
-git clone <your-fork-url> hyperframes-editor
+git clone <url-do-seu-fork> hyperframes-editor
 cd hyperframes-editor
 npm install
 
-# Optional — only if you want to use the ClickUp / OpenAI integrations
+# Opcional — apenas se quiser usar as integrações ClickUp / OpenAI
 cp .env.example .env
-# ...then edit .env with your own keys
+# ...depois edite .env com suas próprias chaves
 
-# Open Studio on one of the included projects
+# Abra o Studio em um dos projetos inclusos
 cd video-projects/may-shorts-19
 npx hyperframes preview    # http://localhost:3002
 ```
 
-Studio hot-reloads on file save. Scrub the timeline, inspect scenes, change colors, watch it re-render live.
+O Studio recarrega automaticamente ao salvar o arquivo. Varra a timeline, inspecione cenas, mude cores, veja re-renderizar ao vivo.
 
-## Repo layout
+## Estrutura do repositório
 
 ```
 hyperframes-editor/
-├── README.md                    ← you are here
-├── LICENSE                      ← MIT (see note on brand assets)
-├── .env.example                 ← copy to .env, fill in your own keys
-├── CLAUDE.md                    ← full workspace guide for Claude Code users
-├── AGENTS.md                    ← agent-delegation notes
-├── MOTION_PHILOSOPHY.md         ← the motion aesthetic this repo aspires to
-├── DESIGN.ais-example.md        ← the AIS brand spec — your worked example
-├── assets/                      ← shared brand examples (AIS logo + tokens)
+├── README.md                    ← você está aqui
+├── LICENSE                      ← MIT (veja nota sobre assets de marca)
+├── .env.example                 ← copie para .env, preencha com suas chaves
+├── CLAUDE.md                    ← guia completo do workspace para usuários do Claude Code
+├── AGENTS.md                    ← notas sobre delegação a agentes
+├── MOTION_PHILOSOPHY.md         ← a estética de motion que este repo almeja
+├── DESIGN.ais-example.md        ← a spec de marca da AIS — seu exemplo trabalhado
+├── assets/                      ← exemplos de marca compartilhados (logo AIS + tokens)
 │   ├── AIS Logo PNG.png
 │   ├── AIS Background.png
 │   ├── AIS Brand Guideline Small.jpg
-│   └── brand-tokens.css         ← CSS custom props every comp can import
-├── docs/                        ← longer-form specs + plans
-├── scripts/                     ← workspace-level preflight scripts
-├── .claude/                     ← Claude Code skills (drop-in slash commands)
+│   └── brand-tokens.css         ← custom props CSS que toda comp pode importar
+├── docs/                        ← specs e planos mais longos
+├── scripts/                     ← scripts de preflight no nível do workspace
+├── .claude/                     ← skills do Claude Code (slash commands drop-in)
 │   ├── launch.json
 │   └── skills/                  ← /hyperframes, /gsap, /make-a-video, etc.
 ├── package.json
-└── video-projects/              ← the 13 projects
-    └── <project>/
-        ├── index.html           ← root composition entry
-        ├── compositions/        ← sub-comps loaded via data-composition-src
-        ├── assets/              ← video, audio, images, transcripts
-        ├── final.mp4            ← the target output — watch this first
-        ├── renders/             ← your local render scratch (gitignored)
-        ├── hyperframes.json     ← CLI config (paths relative to this folder)
-        ├── meta.json            ← id / name / dimensions / fps
-        └── (STORYBOARD.md, HANDOFF.md, NOTES.md as applicable)
+└── video-projects/              ← os 13 projetos
+    └── <projeto>/
+        ├── index.html           ← ponto de entrada da composição raiz
+        ├── compositions/        ← sub-comps carregadas via data-composition-src
+        ├── assets/              ← vídeo, áudio, imagens, transcrições
+        ├── final.mp4            ← a saída alvo — assista isto primeiro
+        ├── renders/             ← seu rascunho local de render (no gitignore)
+        ├── hyperframes.json     ← config da CLI (caminhos relativos a esta pasta)
+        ├── meta.json            ← id / nome / dimensões / fps
+        └── (STORYBOARD.md, HANDOFF.md, NOTES.md conforme aplicável)
 ```
 
-## The 12 projects, at a glance
+## Os 12 projetos, em um relance
 
-Start by opening each `final.mp4` to see the target, then open `index.html` to see how it's built.
+Comece abrindo cada `final.mp4` para ver o alvo, depois abra `index.html` para ver como foi construído.
 
-### Short-form vertical (9:16, 1080×1920)
-| Project | What it is |
+### Vertical short-form (9:16, 1080×1920)
+| Projeto | O que é |
 |---|---|
-| `may-shorts-19` | TikTok-style talking-head + motion graphics + karaoke captions. This one has the most polish — the `/short-form-video` skill was written around it. |
-| `may-shorts-18` | Earlier short in the same series. Compare v2 vs may-shorts-19 to see what got refined. |
+| `may-shorts-19` | Talking-head estilo TikTok + motion graphics + legendas karaokê. Este tem o maior polimento — a skill `/short-form-video` foi escrita em torno dele. |
+| `may-shorts-18` | Short anterior na mesma série. Compare v2 com may-shorts-19 para ver o que foi refinado. |
 
-### Short-form landscape (16:9)
-| Project | What it is |
+### Landscape short-form (16:9)
+| Projeto | O que é |
 |---|---|
-| `may-shorts-6` | Landscape cut of a talking-head short, same production pattern as the vertical series. |
+| `may-shorts-6` | Corte landscape de um talking-head short, mesmo padrão de produção da série vertical. |
 
-### Product promos
-| Project | What it is |
+### Promos de produto
+| Projeto | O que é |
 |---|---|
-| `clickup-demo` | 60s SaaS product demo — heavy registry-block use (x-post, ui-3d-reveal). Five render versions show the iteration curve. |
-| `linear-promo-30s` | 30s Linear-style promo in the Infinite Payments aesthetic. Ships as a draft — finishing it is a good student exercise. See `NOTES.md`. |
-| `hyperframes-sizzle` | Hyperframes × Claude Code sizzle reel. Uses the `/website-to-hyperframes` flow. |
-| `first-agent-promo` | 32s "Your First AI Agent" launch film. Uses a React-via-Babel approach instead of the standard HTML pattern — a useful counter-example. |
+| `clickup-demo` | Demo de produto SaaS de 60s — uso pesado de blocos do registry (x-post, ui-3d-reveal). Cinco versões de render mostram a curva de iteração. |
+| `linear-promo-30s` | Promo de 30s estilo Linear na estética Infinite Payments. Foi entregue como draft — terminá-lo é um bom exercício para estudante. Veja `NOTES.md`. |
+| `hyperframes-sizzle` | Sizzle reel Hyperframes × Claude Code. Usa o fluxo `/website-to-hyperframes`. |
+| `first-agent-promo` | Filme de lançamento "Your First AI Agent" de 32s. Usa abordagem React-via-Babel em vez do padrão HTML — um contra-exemplo útil. |
 
-### Educational lessons
-| Project | What it is |
+### Aulas educacionais
+| Projeto | O que é |
 |---|---|
-| `aisoc-lesson-5-1` | Full lesson video (face-cam + motion graphics). See CLAUDE.md for the new-lesson pipeline (transcribe → word-synced MG → sections). |
-| `golden-ratio-demo` | AIS lesson on proportion in layout. Ships as a polished draft — see `NOTES.md` for what was left open. |
-| `claude-edit-intro` | Promo-style intro to an editing workflow; minimal brand hardcoding — easy starting template. |
+| `aisoc-lesson-5-1` | Vídeo-aula completo (face-cam + motion graphics). Veja CLAUDE.md para o pipeline de nova aula (transcrever → MG sincronizado por palavra → seções). |
+| `golden-ratio-demo` | Aula AIS sobre proporção em layout. Entregue como draft polido — veja `NOTES.md` para o que ficou em aberto. |
+| `claude-edit-intro` | Intro estilo promo para um workflow de edição; mínimo hardcoding de marca — template inicial fácil. |
 
-### Brand hype / launch
-| Project | What it is |
+### Hype / lançamento de marca
+| Projeto | O que é |
 |---|---|
-| `aisoc-hype` | 30s AI Automation Society brand hype film — the scaffold many other AIS projects reference. |
-| `aisoc-app-release` | 30s AIS mobile app release promo. Read `HANDOFF.md` — Nate documented every footgun. |
+| `aisoc-hype` | Filme de hype da marca AI Automation Society de 30s — o scaffold que muitos outros projetos AIS referenciam. |
+| `aisoc-app-release` | Promo de 30s do lançamento do app mobile AIS. Leia `HANDOFF.md` — o Nate documentou cada pegadinha. |
 
-## ⚠️ Customizing for your brand
+## ⚠️ Customizando para sua marca
 
-**This is the most important section.** The repo ships with AI Automation Society (AIS) branding baked in as a worked example. Before you use any of this for your own work, swap these out:
+**Esta é a seção mais importante.** O repositório vem com o branding da AI Automation Society (AIS) embutido como exemplo trabalhado. Antes de usar qualquer coisa disto para seu próprio trabalho, troque isto:
 
-### The global swap list
+### A lista de troca global
 
-| File | What it is | What to do |
+| Arquivo | O que é | O que fazer |
 |---|---|---|
-| `assets/brand-tokens.css` | Defines `--ais-bg`, `--ais-accent`, `--ais-warn`, font variables | Replace hex values + font families with your own. Consider renaming the custom-prop prefix to your brand (`--acme-bg`, etc.) — but then you'll need to grep every composition for the old names. |
-| `assets/AIS Logo PNG.png` | Logo used by AIS projects | Drop your own logo in; either keep the filename so existing references work, or rename and grep-replace. |
-| `assets/AIS Background.png` | Background image occasionally used in AIS scenes | Same pattern as logo. |
-| `assets/AIS Brand Guideline Small.jpg` | Reference image for the AIS brand | Delete; replace with your own guideline image if you have one. |
-| `DESIGN.ais-example.md` | Full AIS brand spec | **Don't edit.** Use it as your template: copy it to your new project folder as `DESIGN.md` and rewrite colors, fonts, motion rules, and "What NOT to Do" for your brand. |
+| `assets/brand-tokens.css` | Define `--ais-bg`, `--ais-accent`, `--ais-warn`, variáveis de fonte | Substitua os valores hex + famílias de fonte pelos seus. Considere renomear o prefixo das custom props para sua marca (`--acme-bg`, etc.) — mas aí você vai precisar fazer grep em toda composição pelos nomes antigos. |
+| `assets/AIS Logo PNG.png` | Logo usado pelos projetos AIS | Jogue seu próprio logo; ou mantenha o nome do arquivo para que as referências existentes funcionem, ou renomeie e faça grep-replace. |
+| `assets/AIS Background.png` | Imagem de fundo ocasionalmente usada em cenas AIS | Mesmo padrão do logo. |
+| `assets/AIS Brand Guideline Small.jpg` | Imagem de referência para a marca AIS | Delete; substitua por sua própria imagem de guideline se tiver uma. |
+| `DESIGN.ais-example.md` | Spec completa da marca AIS | **Não edite.** Use como seu template: copie para a pasta do seu novo projeto como `DESIGN.md` e reescreva cores, fontes, regras de motion e "O que NÃO fazer" para sua marca. |
 
-### Per-project AIS coupling
+### Acoplamento AIS por projeto
 
-| Project | AIS coupling | Treat as |
+| Projeto | Acoplamento AIS | Tratar como |
 |---|---|---|
-| `aisoc-hype`, `aisoc-app-release`, `aisoc-lesson-5-1`, `golden-ratio-demo` | **Heavy** — hex values hardcoded in compositions, `@aiautomationsociety` handle, AIS logo glow recipe, Nate's on-camera identity in some scenes | Reference only. Rebuild from scratch for your brand. |
-| `clickup-demo`, `first-agent-promo`, `hyperframes-sizzle`, `linear-promo-30s`, `may-shorts-*`, `context-session`, `claude-edit-intro` | **Minimal** | Good starting templates — swap the brand tokens and you're mostly there. |
+| `aisoc-hype`, `aisoc-app-release`, `aisoc-lesson-5-1`, `golden-ratio-demo` | **Pesado** — valores hex hardcoded nas composições, handle `@aiautomationsociety`, receita de glow do logo AIS, identidade on-camera do Nate em algumas cenas | Apenas referência. Reconstrua do zero para sua marca. |
+| `clickup-demo`, `first-agent-promo`, `hyperframes-sizzle`, `linear-promo-30s`, `may-shorts-*`, `context-session`, `claude-edit-intro` | **Mínimo** | Bons templates iniciais — troque os tokens de marca e você está quase lá. |
 
-### Find-and-fix sweep
+### Varredura de busca-e-correção
 
-After you've swapped the global assets, run this grep to find any AIS references still living in compositions:
+Depois de trocar os assets globais, rode este grep para achar quaisquer referências AIS ainda vivendo nas composições:
 
 ```bash
-# Finds hardcoded hex values and AIS strings anywhere in video-projects/
+# Acha valores hex hardcoded e strings AIS em qualquer lugar de video-projects/
 grep -rEn "(#37bdf8|#f09025|#07121c|#195066|aisoc|AIS Logo|@aiautomationsociety)" video-projects/
 ```
 
-Replace each hit either with the matching CSS custom prop from your new `brand-tokens.css`, or with your own hex/handle.
+Substitua cada resultado pela custom prop CSS correspondente do seu novo `brand-tokens.css`, ou pelo seu próprio hex/handle.
 
-## Creating your own new video project
+## Criando seu próprio novo projeto de vídeo
 
-1. Pick a kebab-case name: `mkdir video-projects/my-brand-promo`
-2. Scaffold with the CLI or copy a sibling:
+1. Escolha um nome em kebab-case: `mkdir video-projects/meu-promo-marca`
+2. Faça o scaffold com a CLI ou copie um irmão:
    ```bash
-   cd video-projects/my-brand-promo
+   cd video-projects/meu-promo-marca
    npx hyperframes init
    ```
-   Or, faster: copy the `hyperframes.json` + `meta.json` from a sibling project you like, edit `meta.json` for your new id/name/dimensions, and start on `index.html` from scratch.
-3. Install the shared brand assets into your project:
+   Ou, mais rápido: copie `hyperframes.json` + `meta.json` de um projeto irmão que você goste, edite `meta.json` com seu novo id/nome/dimensões, e comece o `index.html` do zero.
+3. Instale os assets de marca compartilhados no seu projeto:
    ```bash
    cp ../../assets/brand-tokens.css assets/
-   cp ../../assets/YourLogo.png assets/
+   cp ../../assets/SeuLogo.png assets/
    ```
-4. Write your `DESIGN.md` (copy the shape of `DESIGN.ais-example.md` from the root).
-5. Build. Preview. Lint. Render.
+4. Escreva seu `DESIGN.md` (copie o formato de `DESIGN.ais-example.md` da raiz).
+5. Construa. Preview. Lint. Render.
 
-## The authoring loop
+## O loop de autoria
 
 ```
-edit → lint → preview (Studio, live) → draft render → verify frames → final render
+editar → lint → preview (Studio, ao vivo) → render draft → verificar frames → render final
 ```
 
-| Step | Command | What to check |
+| Passo | Comando | O que verificar |
 |---|---|---|
-| Lint | `npx hyperframes lint` | Zero errors before you preview. Warnings are survivable. |
-| Preview | `npx hyperframes preview` | Scrub the timeline, fix anything weird live. Hot reload works. |
-| Draft render | `npx hyperframes render --quality draft --output renders/draft.mp4` | ~1–3 minutes. CRF 28 — pixelated but fast. |
-| Verify frames | `ffmpeg -ss <t> -i renders/draft.mp4 -frames:v 1 out.png` | Pull one frame per scene at its hero moment. Look for cropped faces, misaligned text, blank frames. |
-| Final render | `npx hyperframes render --quality standard --output renders/final.mp4` | Visually lossless 1080p. Ship this. |
+| Lint | `npx hyperframes lint` | Zero erros antes do preview. Warnings são sobreviventes. |
+| Preview | `npx hyperframes preview` | Varra a timeline, conserte qualquer coisa estranha ao vivo. Hot reload funciona. |
+| Render draft | `npx hyperframes render --quality draft --output renders/draft.mp4` | ~1–3 minutos. CRF 28 — pixelado mas rápido. |
+| Verificar frames | `ffmpeg -ss <t> -i renders/draft.mp4 -frames:v 1 out.png` | Puxe um frame por cena no momento-herói. Procure por rostos cortados, texto desalinhado, frames em branco. |
+| Render final | `npx hyperframes render --quality standard --output renders/final.mp4` | Visualmente lossless 1080p. É este que se entrega. |
 
-> **`MOTION_PHILOSOPHY.md` is your aesthetic gym.** Before you build anything, read section 0 (the 10 Laws) and section 4 (pre-flight checklist). This doc is the difference between "it rendered" and "it's good."
+> **`MOTION_PHILOSOPHY.md` é sua academia estética.** Antes de construir qualquer coisa, leia a seção 0 (as 10 Leis) e a seção 4 (checklist pré-voo). Este doc é a diferença entre "renderizou" e "está bom".
 
-## Recommended reading order
+## Ordem de leitura recomendada
 
-1. **This README** (you're here)
-2. **`CLAUDE.md`** — full workspace guide, conventions, skills, render contract. Useful even if you're not using Claude Code — the 11 Render Contract rules apply to anyone editing a composition.
-3. **`MOTION_PHILOSOPHY.md`** — aesthetic rules. Read before brainstorming your first scene.
-4. **`DESIGN.ais-example.md`** — worked example of a brand spec.
-5. **Pick one generic project** (`claude-edit-intro` is a good start). Open `index.html`, `final.mp4` side by side, and the `compositions/` folder. Read, scrub, modify, re-render.
-6. **Then open an AIS project** — you'll have the vocabulary to see how far they push the framework.
+1. **Este README** (você está aqui)
+2. **`CLAUDE.md`** — guia completo do workspace, convenções, skills, contrato de render. Útil mesmo se você não usar Claude Code — as 11 regras do Contrato de Render valem para qualquer um editando uma composição.
+3. **`MOTION_PHILOSOPHY.md`** — regras estéticas. Leia antes de brainstormar sua primeira cena.
+4. **`DESIGN.ais-example.md`** — exemplo trabalhado de uma spec de marca.
+5. **Escolha um projeto genérico** (`claude-edit-intro` é um bom começo). Abra `index.html`, `final.mp4` lado a lado, e a pasta `compositions/`. Leia, varra, modifique, re-renderize.
+6. **Depois abra um projeto AIS** — você terá o vocabulário para ver quão longe eles empurram o framework.
 
-## Using Claude Code with this repo
+## Usando Claude Code com este repositório
 
-The `.claude/skills/` folder ships a set of slash commands that encode framework-specific patterns (`window.__timelines` registration, `data-*` attribute semantics, shader-compatible CSS). If you use [Claude Code](https://claude.com/claude-code), these unlock automatically:
+A pasta `.claude/skills/` traz um conjunto de slash commands que encodam padrões específicos do framework (registro `window.__timelines`, semântica de atributos `data-*`, CSS compatível com shader). Se você usa o [Claude Code](https://claude.com/claude-code), eles ativam automaticamente:
 
-- `/hyperframes` — authoring/editing compositions, captions, TTS, audio-reactive animation
-- `/hyperframes-cli` — CLI reference (init, add, lint, preview, render, transcribe, tts)
-- `/gsap` — GSAP animation: timelines, easing, stagger, plugins
-- `/hyperframes-registry` — install catalog blocks/components
-- `/website-to-hyperframes` — turn a URL into a composition (7-step capture-to-video)
-- `/make-a-video` — end-to-end beginner flow
-- `/short-form-video` — 9:16 talking-head + motion graphics playbook
+- `/hyperframes` — autoria/edição de composições, legendas, TTS, animação audio-reativa
+- `/hyperframes-cli` — referência da CLI (init, add, lint, preview, render, transcribe, tts)
+- `/gsap` — animação GSAP: timelines, easing, stagger, plugins
+- `/hyperframes-registry` — instalar blocks/components do catálogo
+- `/website-to-hyperframes` — transformar uma URL em composição (captura-para-vídeo em 7 passos)
+- `/make-a-video` — fluxo iniciante ponta-a-ponta
+- `/short-form-video` — playbook 9:16 talking-head + motion graphics
 
-Not a Claude Code user? The skills are just markdown — open them up and read as documentation.
+Não usa Claude Code? As skills são só markdown — abra e leia como documentação.
 
-## Troubleshooting
+## Solução de problemas
 
-| Symptom | First thing to try |
+| Sintoma | Primeira coisa a tentar |
 |---|---|
-| `npx hyperframes` — command not found | `npm install` in the repo root first |
-| Render fails mid-way | `npx hyperframes doctor` — verifies Node, FFmpeg, Chrome |
-| Studio preview stuck at 0s | Hard-refresh the browser (Ctrl+Shift+R). If that fails, try a specific sub-composition URL: `http://localhost:3002/?comp=<sub-comp-id>` |
-| Lint errors about overlapping clips | Two clips on the same `data-track-index` overlap in time — assign different track indices or adjust `data-start` / `data-duration` |
-| Lint errors about `missing_gsap_script` | Every sub-composition HTML needs its own `<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>` before its IIFE — GSAP doesn't inherit from the parent |
-| Video frozen in a render, audio continues | A `<video>` element was animated directly (don't animate `width`/`height`/`top`/`left` on a `<video>`). Wrap it in a `<div>` and animate the wrapper. |
+| `npx hyperframes` — comando não encontrado | Rode `npm install` na raiz do repo primeiro |
+| Render falha no meio | `npx hyperframes doctor` — verifica Node, FFmpeg, Chrome |
+| Preview do Studio travado em 0s | Hard-refresh no navegador (Ctrl+Shift+R). Se falhar, tente uma URL de sub-composição específica: `http://localhost:3002/?comp=<sub-comp-id>` |
+| Erros de lint sobre clips sobrepostos | Dois clips no mesmo `data-track-index` sobrepostos no tempo — atribua track indices diferentes ou ajuste `data-start` / `data-duration` |
+| Erros de lint sobre `missing_gsap_script` | Todo HTML de sub-composição precisa do seu próprio `<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>` antes do seu IIFE — GSAP não herda do pai |
+| Vídeo congelado num render, áudio continua | Um elemento `<video>` foi animado diretamente (não anime `width`/`height`/`top`/`left` num `<video>`). Envolva num `<div>` e anime o wrapper. |
 
-More: `npx hyperframes docs <topic>` (topics: `data-attributes`, `gsap`, `rendering`, `examples`, `troubleshooting`, `compositions`).
+Mais: `npx hyperframes docs <tópico>` (tópicos: `data-attributes`, `gsap`, `rendering`, `examples`, `troubleshooting`, `compositions`).
 
-## Credits and license
+## Créditos e licença
 
-- **Code and compositions** — MIT, see `LICENSE`.
-- **AIS brand assets** (logo, background, brand guideline image, AIS tokens) — remain the property of AI Automation Society. Included as a worked example; not licensed for reuse. Replace them with your own before shipping.
-- **Hyperframes** — framework © HeyGen, docs at https://hyperframes.heygen.com.
+- **Código e composições** — MIT, veja `LICENSE`.
+- **Assets de marca AIS** (logo, background, imagem de guideline, tokens AIS) — permanecem propriedade da AI Automation Society. Inclusos como exemplo trabalhado; não licenciados para reuso. Substitua pelos seus próprios antes de entregar.
+- **Hyperframes** — framework © HeyGen, docs em https://hyperframes.heygen.com.
 
-Built by [Nate Herk](https://aiautomationsociety.ai). Have fun ripping it apart.
+Construído por [Nate Herk](https://aiautomationsociety.ai). Divirta-se destrinchando.
