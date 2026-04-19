@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Módulo 1.1 - Setup e Fundamentos | Design + Vídeo com IA</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#FACC15', dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' } } } } }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+
+    html:not(.dark) .text-emerald-400 { color: #059669; }
+    html:not(.dark) .bg-emerald-500\/20 { background-color: rgba(5, 150, 105, 0.12); }
+    html:not(.dark) .bg-emerald-500\/10 { background-color: rgba(5, 150, 105, 0.08); }
+    html:not(.dark) .border-emerald-500\/30 { border-color: rgba(5, 150, 105, 0.25); }
+    html:not(.dark) .hover\:bg-emerald-500\/30:hover { background-color: rgba(5, 150, 105, 0.18); }
+    html:not(.dark) .hover\:bg-emerald-500:hover { background-color: #059669; }
+
+    html:not(.dark) .text-blue-400 { color: #2563eb; }
+    html:not(.dark) .bg-blue-900\/20 { background-color: rgba(37, 99, 235, 0.08); }
+    html:not(.dark) .border-blue-500\/30 { border-color: rgba(37, 99, 235, 0.25); }
+    html:not(.dark) .text-red-400 { color: #dc2626; }
+    html:not(.dark) .bg-red-900\/20 { background-color: rgba(220, 38, 38, 0.08); }
+    html:not(.dark) .border-red-500\/30 { border-color: rgba(220, 38, 38, 0.25); }
+
+    html:not(.dark) .hover\:text-blue-400:hover { color: #2563eb; }
+    html:not(.dark) .hover\:bg-blue-500\/10:hover { background-color: rgba(37, 99, 235, 0.08); }
+    html:not(.dark) .hover\:text-purple-400:hover { color: #7c3aed; }
+    html:not(.dark) .hover\:bg-purple-500\/10:hover { background-color: rgba(124, 58, 237, 0.08); }
+
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161, 98, 7, 0.08); }
+    html:not(.dark) .border-primary\/30 { border-color: rgba(161, 98, 7, 0.25); }
+    html:not(.dark) .border-primary\/40 { border-color: rgba(161, 98, 7, 0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255, 255, 255, 0.95); }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- NAVIGATION -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
+            <span class="text-2xl">🎬</span><span class="font-bold text-lg hidden sm:inline">Design + Vídeo com IA</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-emerald-400 bg-emerald-500/10"><span class="sm:hidden">T1</span><span class="hidden sm:inline">Fundamentos</span></a>
+          <a href="../trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors"><span class="sm:hidden">T2</span><span class="hidden sm:inline">Produção</span></a>
+          <a href="../trilha3/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors"><span class="sm:hidden">T3</span><span class="hidden sm:inline">Avançado</span></a>
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- BREADCRUMB -->
+  <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <div class="flex items-center space-x-2 text-sm text-neutral-400">
+      <a href="../../index.html" class="hover:text-emerald-400">Início</a>
+      <span>/</span>
+      <a href="index.html" class="hover:text-emerald-400">Trilha 1</a>
+      <span>/</span>
+      <span class="text-emerald-400">Módulo 1.1</span>
+    </div>
+  </nav>
+
+  <!-- HEADER -->
+  <header class="bg-gradient-to-br from-emerald-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <span class="inline-block px-3 py-1 bg-emerald-500/20 text-emerald-400 text-xs font-semibold rounded-full mb-4">MÓDULO 1.1</span>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-4">🔧 Setup e Fundamentos</h1>
+      <p class="text-lg text-neutral-400 max-w-3xl">Instalar ambiente, rodar primeiro preview no Studio e entender a diferença entre Claude Design (estático) e Hyperframes (vídeo). O módulo que coloca você em pé para tudo que vem depois.</p>
+      <div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-emerald-400">6</div><div class="text-xs text-neutral-400">Tópicos</div></div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-emerald-400">30</div><div class="text-xs text-neutral-400">Minutos</div></div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-emerald-400">Básico</div><div class="text-xs text-neutral-400">Nível</div></div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-emerald-400">Prática</div><div class="text-xs text-neutral-400">Tipo</div></div>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- TÓPICO 1 -->
+    <section id="topico-1" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">1</span>
+        <h2 class="text-2xl font-bold">🔧 Instalar o ambiente</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">O pipeline Hyperframes precisa de <strong class="text-emerald-400">quatro peças básicas</strong> na sua máquina antes de qualquer coisa: Node para rodar a CLI, FFmpeg para manipular áudio e vídeo, Chrome para o render headless e disco suficiente para os outputs. Resolver isso uma vez aqui evita 80% dos problemas "não rodou aqui" depois.</p>
+
+      <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center"><span class="mr-2">📦</span> Dependências mínimas</h3>
+        <ul class="space-y-2 text-neutral-300">
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span><strong>Node 20+</strong> — rode <code class="bg-dark-700 px-2 py-0.5 rounded text-sm">node --version</code> para verificar</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span><strong>FFmpeg</strong> no PATH — <code class="bg-dark-700 px-2 py-0.5 rounded text-sm">ffmpeg -version</code> deve responder</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span><strong>Chrome</strong> atualizado — o render roda em Chromium headless</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span><strong>~5 GB de disco</strong> livres e 16 GB de RAM para preview fluido</span></li>
+        </ul>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Dica prática</h3>
+        <p class="text-neutral-300">Em Mac, <code class="bg-dark-700 px-2 py-0.5 rounded text-sm">brew install node ffmpeg</code> resolve as duas de uma vez. No Linux, <code class="bg-dark-700 px-2 py-0.5 rounded text-sm">apt install nodejs ffmpeg</code> ou equivalente. No Windows, use <a href="https://nodejs.org" class="text-sky-400 hover:text-sky-300">nodejs.org</a> e <a href="https://ffmpeg.org/download.html" class="text-sky-400 hover:text-sky-300">ffmpeg.org</a> — e garanta que estão no PATH.</p>
+      </div>
+    </section>
+
+    <!-- TÓPICO 2 -->
+    <section id="topico-2" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">2</span>
+        <h2 class="text-2xl font-bold">📦 Clonar e instalar dependências</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">O kit é um <strong class="text-emerald-400">workspace multi-projeto</strong>: node_modules fica na raiz e é compartilhado por todos os video-projects/. Isso significa uma única instalação serve para os 12 projetos do kit.</p>
+
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+        <h3 class="text-lg font-semibold mb-4">📋 Passo a passo</h3>
+        <div class="space-y-3 text-neutral-300 text-sm">
+          <div><span class="text-emerald-400 font-semibold">1.</span> <code class="bg-dark-700 px-2 py-0.5 rounded">git clone https://github.com/inematds/cchyperframes</code></div>
+          <div><span class="text-emerald-400 font-semibold">2.</span> <code class="bg-dark-700 px-2 py-0.5 rounded">cd cchyperframes</code></div>
+          <div><span class="text-emerald-400 font-semibold">3.</span> <code class="bg-dark-700 px-2 py-0.5 rounded">npm install</code> — demora 1–3 min</div>
+          <div><span class="text-emerald-400 font-semibold">4.</span> (opcional) <code class="bg-dark-700 px-2 py-0.5 rounded">cp .env.example .env</code> e preencha chaves de ClickUp/OpenAI se for usar</div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+          <h4 class="font-bold text-emerald-400 mb-4">✓ FAZER</h4>
+          <ul class="space-y-2 text-neutral-300 text-sm">
+            <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>npm install UMA vez na raiz do repo</span></li>
+            <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Manter a árvore node_modules só na raiz</span></li>
+            <li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Usar .env.example como template</span></li>
+          </ul>
+        </div>
+        <div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+          <h4 class="font-bold text-red-400 mb-4">✗ NÃO FAZER</h4>
+          <ul class="space-y-2 text-neutral-300 text-sm">
+            <li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>npm install dentro de cada video-project (duplica)</span></li>
+            <li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Commitar .env no git</span></li>
+            <li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Usar yarn/pnpm sem checar o package-lock</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- TÓPICO 3 -->
+    <section id="topico-3" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">3</span>
+        <h2 class="text-2xl font-bold">✅ Verificar com hyperframes doctor</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">Antes de tentar renderizar e ver o que quebra, rode o <strong class="text-emerald-400">comando de diagnóstico</strong> que reporta o que está faltando e por quê.</p>
+
+      <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center"><span class="mr-2">🩺</span> O que o doctor verifica</h3>
+        <ul class="space-y-2 text-neutral-300">
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span>Versão do Node (≥20)</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span>FFmpeg disponível no PATH</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span>Chrome/Chromium acessível</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span>Docker (opcional — só para render determinístico)</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">•</span><span>Espaço em disco</span></li>
+        </ul>
+      </div>
+
+      <div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">💻</span> Comando</h3>
+        <pre class="bg-dark-900 rounded p-4 text-sm overflow-x-auto"><code class="text-neutral-300">cd cchyperframes
+npx hyperframes doctor</code></pre>
+        <p class="text-neutral-400 text-sm mt-3">Se aparecer algum ✗, o output te diz como resolver. Não continue sem todos os ✓.</p>
+      </div>
+    </section>
+
+    <!-- TÓPICO 4 -->
+    <section id="topico-4" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">4</span>
+        <h2 class="text-2xl font-bold">🎬 Primeiro preview no Studio</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">Studio é o <strong class="text-emerald-400">ambiente de autoria ao vivo</strong> — abre no navegador, recarrega automaticamente ao salvar qualquer arquivo, e deixa você varrer a timeline em tempo real. É onde 90% do trabalho de autoria acontece.</p>
+
+      <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4">🚀 Abrir o Studio num projeto existente</h3>
+        <pre class="bg-dark-900 rounded p-4 text-sm overflow-x-auto"><code class="text-neutral-300">cd video-projects/may-shorts-19
+npx hyperframes preview</code></pre>
+        <p class="text-neutral-400 text-sm mt-3">Vai abrir automaticamente em <code class="bg-dark-700 px-2 py-0.5 rounded">http://localhost:3002</code>.</p>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Dica prática</h3>
+        <p class="text-neutral-300">Se o Studio ficar travado em 0s, hard-refresh o navegador (Ctrl+Shift+R). Se persistir, abra uma sub-composição específica adicionando <code class="bg-dark-700 px-2 py-0.5 rounded text-sm">?comp=nome-da-sub-comp</code> na URL — carrega mais rápido que a composição master.</p>
+      </div>
+
+      <div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-red-400 mb-3 flex items-center"><span class="mr-2">⚠️</span> Atenção</h3>
+        <p class="text-neutral-300"><strong>Sempre rode os comandos da CLI de dentro da pasta do projeto</strong>, nunca da raiz do workspace. A CLI lê <code class="bg-dark-700 px-2 py-0.5 rounded text-sm">hyperframes.json</code> e <code class="bg-dark-700 px-2 py-0.5 rounded text-sm">meta.json</code> do diretório atual — rodar na raiz falha ou escaneia arquivos errados.</p>
+      </div>
+    </section>
+
+    <!-- TÓPICO 5 -->
+    <section id="topico-5" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">5</span>
+        <h2 class="text-2xl font-bold">🎨 Claude Design vs Hyperframes</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">As duas ferramentas são <strong class="text-emerald-400">complementares, não concorrentes</strong>. Entender quando usar cada uma economiza horas de trabalho e evita o erro clássico de tentar fazer vídeo direto sem pensar o design estático primeiro.</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+          <h4 class="font-bold text-emerald-400 mb-4">🖼️ Claude Design (claude.ai/design)</h4>
+          <p class="text-sm text-neutral-300 mb-3">Gera designs <strong>estáticos</strong> ship-ready.</p>
+          <ul class="space-y-2 text-sm text-neutral-300">
+            <li>• Landing pages</li>
+            <li>• Pitch decks (7–10 slides)</li>
+            <li>• Scroll-driven sites</li>
+            <li>• Protótipos clicáveis de app</li>
+            <li>• Marketing websites</li>
+          </ul>
+        </div>
+        <div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6">
+          <h4 class="font-bold text-blue-400 mb-4">🎬 Hyperframes (CLI)</h4>
+          <p class="text-sm text-neutral-300 mb-3">Renderiza <strong>vídeo determinístico</strong> em HTML+GSAP.</p>
+          <ul class="space-y-2 text-sm text-neutral-300">
+            <li>• Short-form vertical (TikTok/Reels)</li>
+            <li>• Promos de produto SaaS</li>
+            <li>• Sizzle reels</li>
+            <li>• Aulas educacionais</li>
+            <li>• Hype films de marca</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">🎯</span> Regra de ouro</h3>
+        <p class="text-neutral-300"><strong>Estático primeiro, movimento depois.</strong> O vídeo herda a decisão visual do design estático. Se a landing page já funciona parada (cor, tipo, hierarquia), o vídeo vai herdar esse mesmo sistema e ficar consistente com as outras peças da campanha.</p>
+      </div>
+    </section>
+
+    <!-- TÓPICO 6 -->
+    <section id="topico-6" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">6</span>
+        <h2 class="text-2xl font-bold">📚 Glossário de motion graphics</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">Sem os termos certos, você não consegue pedir o que quer nem entender a documentação. Este é o <strong class="text-emerald-400">vocabulário mínimo</strong> para sobreviver nos próximos módulos.</p>
+
+      <div class="space-y-4 mb-6">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-5">
+          <h4 class="font-semibold text-emerald-400 mb-2">Motion graphics</h4>
+          <p class="text-sm text-neutral-300">Design em movimento. Tipicamente curto (15s–60s), com tipografia, formas e ícones animados sincronizados a narração ou música.</p>
+        </div>
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-5">
+          <h4 class="font-semibold text-emerald-400 mb-2">Kinetic typography</h4>
+          <p class="text-sm text-neutral-300">Tipografia em movimento — palavras que entram, saem, crescem, giram em sincronia com áudio. É o coração de muitos shorts.</p>
+        </div>
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-5">
+          <h4 class="font-semibold text-emerald-400 mb-2">Shader transitions</h4>
+          <p class="text-sm text-neutral-300">Transições entre cenas calculadas em GPU — distorções, wipes, lens flares. Em Hyperframes são blocos do registry (<code class="bg-dark-700 px-1 rounded">glitch</code>, <code class="bg-dark-700 px-1 rounded">whip-pan</code>, <code class="bg-dark-700 px-1 rounded">sdf-iris</code>).</p>
+        </div>
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-5">
+          <h4 class="font-semibold text-emerald-400 mb-2">GSAP timeline</h4>
+          <p class="text-sm text-neutral-300">Objeto JavaScript que orquestra animações em sequência. Cada composição Hyperframes registra uma timeline pausada em <code class="bg-dark-700 px-1 rounded">window.__timelines</code>.</p>
+        </div>
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-5">
+          <h4 class="font-semibold text-emerald-400 mb-2">Easing</h4>
+          <p class="text-sm text-neutral-300">Curva que define como uma animação acelera e desacelera. <code class="bg-dark-700 px-1 rounded">expo.out</code>, <code class="bg-dark-700 px-1 rounded">power2.inOut</code>, <code class="bg-dark-700 px-1 rounded">back.out(1.7)</code> são os mais usados.</p>
+        </div>
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-5">
+          <h4 class="font-semibold text-emerald-400 mb-2">Data attributes</h4>
+          <p class="text-sm text-neutral-300">Atributos <code class="bg-dark-700 px-1 rounded">data-start</code>, <code class="bg-dark-700 px-1 rounded">data-duration</code>, <code class="bg-dark-700 px-1 rounded">data-track-index</code> em tags HTML. Definem quando cada clip aparece e dura na timeline.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESUMO -->
+    <section class="mb-12">
+      <div class="bg-gradient-to-br from-emerald-900/40 via-dark-800 to-dark-800 rounded-xl border border-emerald-500/30 p-8">
+        <h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-3">📋</span> Resumo do Módulo</h2>
+        <div class="space-y-4 mb-8">
+          <div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><div><strong class="text-white">Ambiente instalado</strong><span class="text-neutral-400"> — Node 20+, FFmpeg, Chrome no PATH</span></div></div>
+          <div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><div><strong class="text-white">Repo clonado</strong><span class="text-neutral-400"> — npm install rodado na raiz uma única vez</span></div></div>
+          <div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><div><strong class="text-white">Doctor passando</strong><span class="text-neutral-400"> — todos os ✓ antes de continuar</span></div></div>
+          <div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><div><strong class="text-white">Studio aberto</strong><span class="text-neutral-400"> — preview num projeto existente, hot reload funcionando</span></div></div>
+          <div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><div><strong class="text-white">Diferença clara</strong><span class="text-neutral-400"> — Claude Design (estático) vs Hyperframes (vídeo), quando usar cada</span></div></div>
+          <div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><div><strong class="text-white">Vocabulário mínimo</strong><span class="text-neutral-400"> — motion graphics, kinetic type, shaders, GSAP, easing, data attributes</span></div></div>
+        </div>
+
+        <div class="bg-dark-800/50 rounded-lg p-4 mb-8">
+          <h3 class="font-semibold text-emerald-400 mb-2">Próximo Módulo:</h3>
+          <p class="text-neutral-300">1.2 - Claude Design: do briefing ao render</p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="index.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">← Voltar para Trilha</a>
+          <a href="modulo-1-2.html" class="flex-1 text-center px-6 py-3 bg-emerald-600 text-white rounded-lg font-semibold hover:bg-emerald-500 transition-colors">Próximo Módulo →</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="border-t border-dark-600 py-8 mt-8">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
+      <p>Design + Vídeo com IA • 2026</p>
+    </div>
+  </footer>
+
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+    const html = document.documentElement;
+    if (localStorage.getItem('theme') === 'light' || (!localStorage.getItem('theme') && !html.classList.contains('dark'))) {
+      themeToggleDarkIcon.classList.remove('hidden'); html.classList.remove('dark');
+    } else { themeToggleLightIcon.classList.remove('hidden'); }
+    themeToggle.addEventListener('click', () => {
+      themeToggleDarkIcon.classList.toggle('hidden');
+      themeToggleLightIcon.classList.toggle('hidden');
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
+  </script>
+
+</body>
+</html>

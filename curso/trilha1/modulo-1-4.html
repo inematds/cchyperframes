@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Módulo 1.4 - MOTION_PHILOSOPHY | Design + Vídeo com IA</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#FACC15', dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' } } } } }</script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+    html:not(.dark) .text-emerald-400 { color: #059669; }
+    html:not(.dark) .bg-emerald-500\/20 { background-color: rgba(5, 150, 105, 0.12); }
+    html:not(.dark) .bg-emerald-500\/10 { background-color: rgba(5, 150, 105, 0.08); }
+    html:not(.dark) .border-emerald-500\/30 { border-color: rgba(5, 150, 105, 0.25); }
+    html:not(.dark) .hover\:bg-emerald-500:hover { background-color: #059669; }
+    html:not(.dark) .text-blue-400 { color: #2563eb; }
+    html:not(.dark) .bg-blue-900\/20 { background-color: rgba(37, 99, 235, 0.08); }
+    html:not(.dark) .border-blue-500\/30 { border-color: rgba(37, 99, 235, 0.25); }
+    html:not(.dark) .text-red-400 { color: #dc2626; }
+    html:not(.dark) .bg-red-900\/20 { background-color: rgba(220, 38, 38, 0.08); }
+    html:not(.dark) .border-red-500\/30 { border-color: rgba(220, 38, 38, 0.25); }
+    html:not(.dark) .hover\:text-blue-400:hover { color: #2563eb; }
+    html:not(.dark) .hover\:bg-blue-500\/10:hover { background-color: rgba(37, 99, 235, 0.08); }
+    html:not(.dark) .hover\:text-purple-400:hover { color: #7c3aed; }
+    html:not(.dark) .hover\:bg-purple-500\/10:hover { background-color: rgba(124, 58, 237, 0.08); }
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161, 98, 7, 0.08); }
+    html:not(.dark) .border-primary\/30 { border-color: rgba(161, 98, 7, 0.25); }
+    html:not(.dark) .border-primary\/40 { border-color: rgba(161, 98, 7, 0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255, 255, 255, 0.95); }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300"><span class="text-2xl">🎬</span><span class="font-bold text-lg hidden sm:inline">Design + Vídeo com IA</span></a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-emerald-400 bg-emerald-500/10"><span class="sm:hidden">T1</span><span class="hidden sm:inline">Fundamentos</span></a>
+          <a href="../trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors"><span class="sm:hidden">T2</span><span class="hidden sm:inline">Produção</span></a>
+          <a href="../trilha3/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors"><span class="sm:hidden">T3</span><span class="hidden sm:inline">Avançado</span></a>
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <div class="flex items-center space-x-2 text-sm text-neutral-400">
+      <a href="../../index.html" class="hover:text-emerald-400">Início</a><span>/</span>
+      <a href="index.html" class="hover:text-emerald-400">Trilha 1</a><span>/</span>
+      <span class="text-emerald-400">Módulo 1.4</span>
+    </div>
+  </nav>
+
+  <header class="bg-gradient-to-br from-emerald-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <span class="inline-block px-3 py-1 bg-emerald-500/20 text-emerald-400 text-xs font-semibold rounded-full mb-4">MÓDULO 1.4</span>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-4">📜 MOTION_PHILOSOPHY: a estética do movimento</h1>
+      <p class="text-lg text-neutral-400 max-w-3xl">As 10 Leis, regra dos três, callback narrativo, outro breathing, pre-flight checklist e o teste "What Would Infinite Do?". O que separa "renderizou" de "está bom".</p>
+      <div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-emerald-400">6</div><div class="text-xs text-neutral-400">Tópicos</div></div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-emerald-400">45</div><div class="text-xs text-neutral-400">Minutos</div></div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-emerald-400">Básico</div><div class="text-xs text-neutral-400">Nível</div></div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-emerald-400">Teoria</div><div class="text-xs text-neutral-400">Tipo</div></div>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <section id="topico-1" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">1</span><h2 class="text-2xl font-bold">📜 As 10 Leis</h2></div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">A seção 0 do <code class="bg-dark-700 px-2 py-0.5 rounded">MOTION_PHILOSOPHY.md</code> contém <strong class="text-emerald-400">10 princípios não-negociáveis</strong> destilados do gold-standard "Infinite Global Payments 30s spot". Elas valem como guardrails para toda composição de motion neste workspace.</p>
+
+      <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center"><span class="mr-2">📜</span> As 10 Leis (resumo)</h3>
+        <ol class="space-y-2 text-neutral-300 list-decimal list-inside">
+          <li><strong>Uma ideia por beat.</strong> Cada cena defende UMA coisa.</li>
+          <li><strong>~1.5s média de cena.</strong> Cortes mais longos viram lentos.</li>
+          <li><strong>Fundo sempre texturizado.</strong> Preto + grid + crosshairs + vinheta + grain.</li>
+          <li><strong>Texto com chrome-gradient + halo glow.</strong> Tipografia cinemática por padrão.</li>
+          <li><strong>Transições com motion-blur.</strong> Whip transitions, nunca hard cuts.</li>
+          <li><strong>≤5 cores simbólicas.</strong> Paleta enxuta força decisão.</li>
+          <li><strong>Regra dos três.</strong> Beats, cortes, cores sempre em trios.</li>
+          <li><strong>Outro breathing 4–6s.</strong> Hold no logo+URL no final.</li>
+          <li><strong>Callback narrativo.</strong> O último beat referencia o primeiro.</li>
+          <li><strong>Pre-flight obrigatório.</strong> Checklist antes de chamar de "feito".</li>
+        </ol>
+      </div>
+
+      <div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6">
+        <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">📚</span> Leitura obrigatória</h3>
+        <p class="text-neutral-300 text-sm">Antes de brainstormar qualquer cena, leia <code class="bg-dark-700 px-2 py-0.5 rounded">MOTION_PHILOSOPHY.md</code> integralmente. Não cite de memória — o doc evolui. A seção 3 tem receitas copy-pasteáveis de padrões HyperFrames.</p>
+      </div>
+    </section>
+
+    <section id="topico-2" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">2</span><h2 class="text-2xl font-bold">3️⃣ Regra dos três</h2></div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">O cérebro lê trios como <strong class="text-emerald-400">intencionais</strong>. Dois parece coincidência, quatro parece excessivo. Três parece design.</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+        <div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-5">
+          <div class="text-3xl mb-2">🎵</div>
+          <h4 class="font-semibold text-emerald-400 mb-2">3 Beats</h4>
+          <p class="text-sm text-neutral-300">Hook → Desenvolvimento → CTA. Três movimentos narrativos.</p>
+        </div>
+        <div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-5">
+          <div class="text-3xl mb-2">🎨</div>
+          <h4 class="font-semibold text-emerald-400 mb-2">3 Cores</h4>
+          <p class="text-sm text-neutral-300">Primary, accent, warn. Três cores simbólicas lideram.</p>
+        </div>
+        <div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-5">
+          <div class="text-3xl mb-2">✂️</div>
+          <h4 class="font-semibold text-emerald-400 mb-2">3 Cortes</h4>
+          <p class="text-sm text-neutral-300">Open → Middle → Close. Três pontos de inflexão.</p>
+        </div>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl border border-primary/30 p-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Aplicação</h3>
+        <p class="text-neutral-300">Quando estiver brainstormando uma cena e tiver 4 ideias, corte 1 para ficarem 3. Quando tiver 2, adicione 1 para chegar a 3. É atalho ritmico testado em música, comédia, design e motion.</p>
+      </div>
+    </section>
+
+    <section id="topico-3" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">3</span><h2 class="text-2xl font-bold">🔄 Callback narrativo</h2></div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">O último beat <strong class="text-emerald-400">espelha o primeiro</strong> — mesma palavra, mesma cor, mesma posição, mesmo motif visual. Fecha o arco narrativo e dá sensação de design intencional.</p>
+
+      <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4">📽️ Como implementar</h3>
+        <div class="space-y-4 text-neutral-300">
+          <div>
+            <h4 class="font-semibold mb-2">Opening motif</h4>
+            <p class="text-sm">Estabeleça um motif visual forte nos primeiros 1–2s: uma palavra, um ícone, um shape, uma cor dominante.</p>
+          </div>
+          <div>
+            <h4 class="font-semibold mb-2">Middle variations</h4>
+            <p class="text-sm">O motif some, aparece transformado, contexto muda. O espectador não o registra conscientemente.</p>
+          </div>
+          <div>
+            <h4 class="font-semibold mb-2">Closing reprise</h4>
+            <p class="text-sm">Última cena traz o motif de volta — idêntico ou ligeiramente evoluído. O espectador sente "isso terminou" subconscientemente.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="topico-4" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">4</span><h2 class="text-2xl font-bold">💤 Outro breathing</h2></div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">No final do vídeo, <strong class="text-emerald-400">hold de 4 a 6 segundos</strong> com logo + URL sem movimento. Vídeo sem outro breathing parece cortado. Com respiro, o logo e CTA gravam na memória.</p>
+
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+        <h3 class="text-lg font-semibold mb-4">⏱️ Timing sugerido</h3>
+        <div class="space-y-3 text-sm">
+          <div class="flex items-start space-x-4">
+            <div class="w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center flex-shrink-0"><span class="text-emerald-400 font-bold">1</span></div>
+            <div class="flex-1"><h4 class="font-semibold">0.5s</h4><p class="text-neutral-400">Último corte para o outro: logo aparece via scale-in com motion blur</p></div>
+          </div>
+          <div class="flex items-start space-x-4">
+            <div class="w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center flex-shrink-0"><span class="text-emerald-400 font-bold">2</span></div>
+            <div class="flex-1"><h4 class="font-semibold">4–6s hold</h4><p class="text-neutral-400">Logo + URL estáticos no centro. Sem movimento (ou muito sutil).</p></div>
+          </div>
+          <div class="flex items-start space-x-4">
+            <div class="w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center flex-shrink-0"><span class="text-emerald-400 font-bold">3</span></div>
+            <div class="flex-1"><h4 class="font-semibold">0.5s fade</h4><p class="text-neutral-400">Fade suave para preto ou ao frame de cover</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+        <h3 class="text-lg font-semibold text-red-400 mb-3 flex items-center"><span class="mr-2">⚠️</span> Erros comuns</h3>
+        <ul class="space-y-2 text-neutral-300 text-sm">
+          <li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Hold muito curto (&lt;3s) — não dá tempo de absorver CTA</span></li>
+          <li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Hold com muito movimento — distrai do CTA</span></li>
+          <li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Sem URL visível — deixa espectador sem ação a tomar</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="topico-5" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">5</span><h2 class="text-2xl font-bold">🎯 Pre-flight checklist</h2></div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">A <strong class="text-emerald-400">seção 4 do MOTION_PHILOSOPHY.md</strong> é um checklist de ~15 itens binários (sim/não) para rodar antes de declarar qualquer vídeo finalizado.</p>
+
+      <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center"><span class="mr-2">✅</span> Amostra do checklist</h3>
+        <ul class="space-y-2 text-neutral-300 text-sm">
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">☐</span><span>Fundo tem grid + crosshairs + vinheta + grain?</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">☐</span><span>Texto tem chrome-gradient + halo glow?</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">☐</span><span>Todas as transições têm motion-blur?</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">☐</span><span>Média de cena está em torno de 1.5s?</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">☐</span><span>Paleta tem ≤5 cores simbólicas?</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">☐</span><span>Existe rule of thirds (três beats, três cortes, três cores)?</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">☐</span><span>Outro faz hold de 4–6s?</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">☐</span><span>Tem callback narrativo (fim referencia começo)?</span></li>
+        </ul>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl border border-primary/30 p-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Por que rodar</h3>
+        <p class="text-neutral-300">Você se engana sozinho no calor da autoria. O checklist força auto-crítica honesta em itens que você esquece quando está exausto de iterar. Se qualquer item é "não", decida: corrige ou defende a decisão?</p>
+      </div>
+    </section>
+
+    <section id="topico-6" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">6</span><h2 class="text-2xl font-bold">🧪 What Would Infinite Do?</h2></div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">Gut check final: <strong class="text-emerald-400">10 perguntas que simulam "o que o time do Infinite faria aqui?"</strong> Se sua resposta é "eu fiz diferente", defenda a razão ou corrija.</p>
+
+      <div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center"><span class="mr-2">❓</span> Amostra das 10 perguntas</h3>
+        <ol class="space-y-2 text-neutral-300 text-sm list-decimal list-inside">
+          <li>O Infinite usaria fade aqui ou whip com motion blur?</li>
+          <li>O texto teria chrome gradient? Halo glow? Scale-in?</li>
+          <li>A cena dura 1.5s ou estou esticando?</li>
+          <li>Tem 3 elementos ou 5 competindo por atenção?</li>
+          <li>O fundo é preto-texturizado ou chapado?</li>
+          <li>A paleta tem ≤5 cores ou está vazando para 8?</li>
+          <li>Existe callback para a primeira cena?</li>
+          <li>O outro tem 4–6s de hold ou corta em 1s?</li>
+          <li>Alguém assistindo sem áudio entende?</li>
+          <li>Em 2s iniciais, tem scroll-stop hook?</li>
+        </ol>
+      </div>
+
+      <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4">🎯 Como usar</h3>
+        <p class="text-neutral-300 text-sm mb-3">Depois do render draft, assista seu vídeo uma vez e, para cada pergunta:</p>
+        <ul class="space-y-2 text-neutral-300 text-sm">
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">1.</span><span>Responda honestamente "sim / não / fiz diferente"</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">2.</span><span>Se "fiz diferente" — escreva 1 frase defendendo a decisão</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">3.</span><span>Se a defesa não convence você mesmo, corrija</span></li>
+          <li class="flex items-start space-x-2"><span class="text-emerald-400 mt-1">4.</span><span>Se convence, segue — é decisão de design defensável</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="mb-12">
+      <div class="bg-gradient-to-br from-emerald-900/40 via-dark-800 to-dark-800 rounded-xl border border-emerald-500/30 p-8">
+        <h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-3">📋</span> Resumo do Módulo</h2>
+        <div class="space-y-4 mb-8">
+          <div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><div><strong class="text-white">10 Leis internalizadas</strong><span class="text-neutral-400"> — da seção 0 do MOTION_PHILOSOPHY.md</span></div></div>
+          <div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><div><strong class="text-white">Regra dos três aplicável</strong><span class="text-neutral-400"> — beats, cortes, cores em trios</span></div></div>
+          <div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><div><strong class="text-white">Callback narrativo entendido</strong><span class="text-neutral-400"> — opening motif → middle variations → closing reprise</span></div></div>
+          <div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><div><strong class="text-white">Outro breathing padronizado</strong><span class="text-neutral-400"> — 4 a 6s de hold, sem movimento</span></div></div>
+          <div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><div><strong class="text-white">Pre-flight checklist rodado</strong><span class="text-neutral-400"> — auto-crítica honesta antes de chamar de "feito"</span></div></div>
+          <div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><div><strong class="text-white">"What Would Infinite Do?" aplicado</strong><span class="text-neutral-400"> — 10 perguntas respondidas com defesa escrita</span></div></div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-4 mb-8"><h3 class="font-semibold text-emerald-400 mb-2">Próxima Trilha:</h3><p class="text-neutral-300">Trilha 2 - Produção (Primeiro Vídeo, Deck+Sizzle, Short Vertical)</p></div>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="modulo-1-3.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">← Módulo Anterior</a>
+          <a href="../trilha2/index.html" class="flex-1 text-center px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-500 transition-colors">Próxima Trilha →</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="border-t border-dark-600 py-8 mt-8"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm"><p>Design + Vídeo com IA • 2026</p></div></footer>
+
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+    const html = document.documentElement;
+    if (localStorage.getItem('theme') === 'light' || (!localStorage.getItem('theme') && !html.classList.contains('dark'))) { themeToggleDarkIcon.classList.remove('hidden'); html.classList.remove('dark'); } else { themeToggleLightIcon.classList.remove('hidden'); }
+    themeToggle.addEventListener('click', () => { themeToggleDarkIcon.classList.toggle('hidden'); themeToggleLightIcon.classList.toggle('hidden'); html.classList.toggle('dark'); localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light'); });
+  </script>
+</body>
+</html>
