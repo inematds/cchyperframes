@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Módulo 1.5 - Ecossistema: Remotion, Playwright, FFmpeg, Hyperframes e Skills | Design + Vídeo com IA</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#FACC15', dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' } } } } }</script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    code, pre { font-family: 'JetBrains Mono', monospace; }
+    .dark body { background-color: #111827; }
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+    html:not(.dark) .text-emerald-400 { color: #059669; }
+    html:not(.dark) .bg-emerald-500\/20 { background-color: rgba(5, 150, 105, 0.12); }
+    html:not(.dark) .bg-emerald-500\/10 { background-color: rgba(5, 150, 105, 0.08); }
+    html:not(.dark) .border-emerald-500\/30 { border-color: rgba(5, 150, 105, 0.25); }
+    html:not(.dark) .hover\:bg-emerald-500:hover { background-color: #059669; }
+    html:not(.dark) .text-blue-400 { color: #2563eb; }
+    html:not(.dark) .bg-blue-900\/20 { background-color: rgba(37, 99, 235, 0.08); }
+    html:not(.dark) .border-blue-500\/30 { border-color: rgba(37, 99, 235, 0.25); }
+    html:not(.dark) .text-red-400 { color: #dc2626; }
+    html:not(.dark) .bg-red-900\/20 { background-color: rgba(220, 38, 38, 0.08); }
+    html:not(.dark) .border-red-500\/30 { border-color: rgba(220, 38, 38, 0.25); }
+    html:not(.dark) .text-purple-400 { color: #7c3aed; }
+    html:not(.dark) .bg-purple-900\/20 { background-color: rgba(124, 58, 237, 0.08); }
+    html:not(.dark) .border-purple-500\/30 { border-color: rgba(124, 58, 237, 0.25); }
+    html:not(.dark) .hover\:text-blue-400:hover { color: #2563eb; }
+    html:not(.dark) .hover\:bg-blue-500\/10:hover { background-color: rgba(37, 99, 235, 0.08); }
+    html:not(.dark) .hover\:text-purple-400:hover { color: #7c3aed; }
+    html:not(.dark) .hover\:bg-purple-500\/10:hover { background-color: rgba(124, 58, 237, 0.08); }
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161, 98, 7, 0.08); }
+    html:not(.dark) .border-primary\/30 { border-color: rgba(161, 98, 7, 0.25); }
+    html:not(.dark) .border-primary\/40 { border-color: rgba(161, 98, 7, 0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255, 255, 255, 0.95); }
+    pre { overflow-x: auto; }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300"><span class="text-2xl">🎬</span><span class="font-bold text-lg hidden sm:inline">Design + Vídeo com IA</span></a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-emerald-400 bg-emerald-500/10"><span class="sm:hidden">T1</span><span class="hidden sm:inline">Fundamentos</span></a>
+          <a href="../trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors"><span class="sm:hidden">T2</span><span class="hidden sm:inline">Produção</span></a>
+          <a href="../trilha3/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors"><span class="sm:hidden">T3</span><span class="hidden sm:inline">Avançado</span></a>
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <div class="flex items-center space-x-2 text-sm text-neutral-400">
+      <a href="../../index.html" class="hover:text-emerald-400">Início</a><span>/</span>
+      <a href="index.html" class="hover:text-emerald-400">Trilha 1</a><span>/</span>
+      <span class="text-emerald-400">Módulo 1.5</span>
+    </div>
+  </nav>
+
+  <header class="bg-gradient-to-br from-emerald-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <span class="inline-block px-3 py-1 bg-emerald-500/20 text-emerald-400 text-xs font-semibold rounded-full mb-4">MÓDULO 1.5</span>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-4">🧰 Ecossistema: Remotion, Playwright, FFmpeg, Hyperframes e as Skills</h1>
+      <p class="text-lg text-neutral-400 max-w-3xl">Por que o mesmo pipeline tem tantos nomes? Este módulo desenha o mapa completo e mostra onde cada peça se encaixa — pra você saber <strong>em que camada está trabalhando</strong> quando um erro aparece.</p>
+      <div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-emerald-400">6</div><div class="text-xs text-neutral-400">Tópicos</div></div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-emerald-400">35</div><div class="text-xs text-neutral-400">Minutos</div></div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-emerald-400">Básico</div><div class="text-xs text-neutral-400">Nível</div></div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-emerald-400">Teoria</div><div class="text-xs text-neutral-400">Tipo</div></div>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <section class="mb-16">
+      <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6">
+        <h2 class="text-xl font-semibold text-emerald-400 mb-3 flex items-center"><span class="mr-2">🗺️</span> A stack em uma frase</h2>
+        <p class="text-neutral-200 text-lg leading-relaxed"><strong>Hyperframes → Chromium → FFmpeg</strong>, com as <strong>Skills</strong> do Claude Code guiando as decisões estéticas e de pipeline.</p>
+        <p class="text-neutral-400 text-sm mt-3">Se você viesse do React, trocaria só a camada do meio por <strong>Remotion</strong>. Se só quisesse screenshot de página pra testar, usaria <strong>Playwright</strong> e pararia aí.</p>
+      </div>
+    </section>
+
+    <section id="topico-1" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">1</span><h2 class="text-2xl font-bold">🎞️ FFmpeg — o encodador universal</h2></div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">FFmpeg é uma <strong class="text-emerald-400">CLI clássica</strong> pra cortar, mixar, converter e encodar áudio e vídeo. Ele <strong>não sabe nada de HTML nem de animação</strong> — só pega frames brutos + trilhas de áudio e monta um MP4/WebM/MOV. É a engrenagem que <strong>todos</strong> os outros frameworks usam no fim.</p>
+
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+        <h3 class="text-lg font-semibold mb-4 text-emerald-400">📦 Exemplos práticos</h3>
+        <div class="space-y-4">
+          <div>
+            <p class="text-sm text-neutral-400 mb-2">Re-encodar um raw <code class="bg-dark-700 px-2 py-0.5 rounded text-xs">.mov</code> pra MP4 leve (como a gente faz antes de referenciar um vídeo numa composição):</p>
+            <pre class="bg-dark-900 rounded-lg p-4 text-xs text-emerald-300 border border-dark-700"><code>ffmpeg -i raw.mov -c:v libx264 -preset medium -crf 20 \
+  -c:a aac -b:a 192k -movflags +faststart assets/clip.mp4</code></pre>
+          </div>
+          <div>
+            <p class="text-sm text-neutral-400 mb-2">Extrair 1 frame em <code class="bg-dark-700 px-2 py-0.5 rounded text-xs">t=4.5s</code> pra auditar um render (parte obrigatória da verificação visual):</p>
+            <pre class="bg-dark-900 rounded-lg p-4 text-xs text-emerald-300 border border-dark-700"><code>ffmpeg -ss 4.5 -i renders/draft.mp4 -frames:v 1 -q:v 2 frame.png</code></pre>
+          </div>
+          <div>
+            <p class="text-sm text-neutral-400 mb-2">Misturar narração + trilha com ducking (o que o Hyperframes faz automaticamente pra você):</p>
+            <pre class="bg-dark-900 rounded-lg p-4 text-xs text-emerald-300 border border-dark-700"><code>ffmpeg -i narration.wav -i music.mp3 -filter_complex \
+  "[1:a]volume=0.2[bg];[0:a][bg]amix=inputs=2:duration=longest" out.mp3</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6">
+        <h3 class="text-lg font-semibold text-blue-400 mb-2 flex items-center"><span class="mr-2">💡</span> Por que te importa</h3>
+        <p class="text-neutral-300 text-sm">Quando um render do Hyperframes falha na última etapa com um erro críptico sobre "codec" ou "container", é o FFmpeg reclamando. Saber que existe esse processo por baixo economiza horas de debug.</p>
+      </div>
+    </section>
+
+    <section id="topico-2" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">2</span><h2 class="text-2xl font-bold">🌐 Playwright vs Puppeteer — automação de browser</h2></div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">Ambos abrem um <strong class="text-emerald-400">Chromium sem janela</strong> e deixam você controlar por código: clicar, digitar, scrollar, tirar screenshot. A diferença é o <strong>uso principal</strong>:</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+        <div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-5">
+          <div class="text-3xl mb-2">🎭</div>
+          <h4 class="font-semibold text-blue-400 mb-2">Playwright</h4>
+          <p class="text-sm text-neutral-300 mb-3">Feito pra <strong>testes end-to-end</strong> e scraping. Suporta Chromium, Firefox e WebKit. API robusta de auto-waiting e seletores.</p>
+          <p class="text-xs text-neutral-500">Mantido pela Microsoft. É o que você usa pra testar seu site ou extrair dados.</p>
+        </div>
+        <div class="bg-purple-900/20 rounded-xl border border-purple-500/30 p-5">
+          <div class="text-3xl mb-2">🤖</div>
+          <h4 class="font-semibold text-purple-400 mb-2">Puppeteer</h4>
+          <p class="text-sm text-neutral-300 mb-3">Irmão mais antigo, do Google, <strong>só Chromium</strong>. Foi primeiro e ainda é a base de muita automação.</p>
+          <p class="text-xs text-neutral-500">Quem usa: Hyperframes, Remotion e a maioria dos frameworks de render HTML-to-video.</p>
+        </div>
+      </div>
+
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+        <h3 class="text-lg font-semibold mb-4 text-emerald-400">📦 Exemplo prático de Playwright</h3>
+        <p class="text-sm text-neutral-400 mb-2">Tirar screenshot do Studio rodando ao vivo, num timestamp específico — útil pra testar uma cena sem pagar render inteiro:</p>
+        <pre class="bg-dark-900 rounded-lg p-4 text-xs text-emerald-300 border border-dark-700"><code>// test-scene.spec.js
+const { test } = require('@playwright/test');
+
+test('screenshot cena-3 at t=4.5s', async ({ page }) =&gt; {
+  await page.goto('http://localhost:3002/?comp=cena-3');
+  await page.evaluate(() =&gt; window.__timelines['cena-3'].seek(4.5));
+  await page.screenshot({ path: 'cena-3-t45.png', fullPage: false });
+});</code></pre>
+      </div>
+
+      <div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+        <h3 class="text-lg font-semibold text-red-400 mb-2 flex items-center"><span class="mr-2">⚠️</span> Armadilha comum</h3>
+        <p class="text-neutral-300 text-sm mb-2">Playwright <strong>pode</strong> gravar vídeo da sessão (<code class="bg-dark-700 px-2 py-0.5 rounded text-xs">page.video()</code>), mas <strong>não é render determinístico</strong>:</p>
+        <ul class="space-y-1 text-neutral-400 text-sm">
+          <li>• Frame-rate varia com CPU</li>
+          <li>• Sem controle de sync de áudio</li>
+          <li>• Sem rendering em tempo virtual</li>
+        </ul>
+        <p class="text-neutral-300 text-sm mt-3">Para motion graphics exporta, use Hyperframes ou Remotion — ambos controlam o virtual time e paralelizam frames entre workers.</p>
+      </div>
+    </section>
+
+    <section id="topico-3" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">3</span><h2 class="text-2xl font-bold">⚛️ Remotion — vídeo em React</h2></div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">Remotion é um framework <strong class="text-emerald-400">vídeo-como-código escrito em React</strong>. Você declara componentes TSX, usa hooks como <code class="bg-dark-700 px-2 py-0.5 rounded">useCurrentFrame()</code>, e o CLI <code class="bg-dark-700 px-2 py-0.5 rounded">npx remotion render</code> abre Chromium, captura frame a frame e manda pro FFmpeg.</p>
+
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+        <h3 class="text-lg font-semibold mb-4 text-emerald-400">📦 Cena Remotion de exemplo</h3>
+        <pre class="bg-dark-900 rounded-lg p-4 text-xs text-emerald-300 border border-dark-700"><code>import { useCurrentFrame, interpolate } from 'remotion';
+
+export const FadeInTitle = () =&gt; {
+  const frame = useCurrentFrame();
+  const opacity = interpolate(frame, [0, 30], [0, 1], { extrapolateRight: 'clamp' });
+
+  return (
+    &lt;div style={{ opacity, fontSize: 90, color: '#fff' }}&gt;
+      INEMA.CLUB
+    &lt;/div&gt;
+  );
+};</code></pre>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+        <div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-5">
+          <h4 class="font-semibold text-emerald-400 mb-2">✓ Pontos fortes</h4>
+          <ul class="text-sm text-neutral-300 space-y-1">
+            <li>• Ecossistema React maduro (hooks, context, suspense)</li>
+            <li>• Tooling pesado: lambdas, server-side render, Players</li>
+            <li>• Ótimo se seu time já é React-native</li>
+          </ul>
+        </div>
+        <div class="bg-red-900/20 rounded-xl border border-red-500/30 p-5">
+          <h4 class="font-semibold text-red-400 mb-2">✗ Pontos fracos</h4>
+          <ul class="text-sm text-neutral-300 space-y-1">
+            <li>• Paywall comercial acima de certa escala de uso</li>
+            <li>• Precisa entender webpack + TSX + hooks pra editar</li>
+            <li>• Sem TTS/transcrição embutidos — tudo é plugin</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6">
+        <h3 class="text-lg font-semibold text-blue-400 mb-2 flex items-center"><span class="mr-2">💡</span> Onde este curso usa</h3>
+        <p class="text-neutral-300 text-sm">Este workspace <strong>não é Remotion</strong> — é Hyperframes. Mas se você já conhece React ou quiser explorar, a skill <code class="bg-dark-700 px-2 py-0.5 rounded">/remotion</code> (disponível no Claude Code) cobre o equivalente deste curso no ecossistema React.</p>
+      </div>
+    </section>
+
+    <section id="topico-4" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">4</span><h2 class="text-2xl font-bold">✨ Hyperframes — vídeo em HTML + GSAP (o que a gente usa)</h2></div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">Hyperframes é o framework <strong class="text-emerald-400">deste workspace</strong>. Mesma ideia do Remotion — Chromium captura frames, FFmpeg encoda — mas a superfície de autoria é <strong>HTML puro com atributos <code class="bg-dark-700 px-2 py-0.5 rounded">data-*</code></strong> e um timeline GSAP por composição.</p>
+
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+        <h3 class="text-lg font-semibold mb-4 text-emerald-400">📦 Mesma cena do tópico anterior, em Hyperframes</h3>
+        <pre class="bg-dark-900 rounded-lg p-4 text-xs text-emerald-300 border border-dark-700"><code>&lt;div class="clip" data-start="0" data-duration="3" data-track-index="0"&gt;
+  &lt;h1 id="titulo" style="font-size:90px;color:#fff;opacity:0"&gt;INEMA.CLUB&lt;/h1&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+  const tl = gsap.timeline({ paused: true });
+  tl.to('#titulo', { opacity: 1, duration: 1 }, 0);
+  window.__timelines['cena-1'] = tl;
+&lt;/script&gt;</code></pre>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+        <div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-5">
+          <h4 class="font-semibold text-emerald-400 mb-2">✓ Pontos fortes</h4>
+          <ul class="text-sm text-neutral-300 space-y-1">
+            <li>• HTML/CSS/JS puros — sem build step</li>
+            <li>• TTS (Kokoro) + transcrição (Whisper) no CLI</li>
+            <li>• 38 blocos de registry prontos (shaders, overlays, logos)</li>
+            <li>• Studio com hot reload em <code class="bg-dark-700 px-1 rounded text-xs">localhost:3002</code></li>
+            <li>• Sem paywall — mantido pela HeyGen</li>
+          </ul>
+        </div>
+        <div class="bg-red-900/20 rounded-xl border border-red-500/30 p-5">
+          <h4 class="font-semibold text-red-400 mb-2">✗ Pontos fracos</h4>
+          <ul class="text-sm text-neutral-300 space-y-1">
+            <li>• Ecossistema menor que Remotion</li>
+            <li>• Render contract é estrito (11 regras, veja Trilha 2)</li>
+            <li>• Sem composições imperativas (tudo declarado em HTML)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl border border-primary/30 p-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">🎯</span> Por que este curso escolheu Hyperframes</h3>
+        <p class="text-neutral-300 text-sm">Uma composição Hyperframes é <strong>um arquivo HTML</strong> que abre no navegador. Dá pra ler, editar e entender sem setup de React/TSX/webpack. É o menor atrito possível entre "tenho uma ideia" e "estou renderizando frames".</p>
+      </div>
+    </section>
+
+    <section id="topico-5" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">5</span><h2 class="text-2xl font-bold">🧠 Skills (Claude Code) — prompts empacotados</h2></div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">Skills <strong>não renderizam nada</strong>. São <strong class="text-emerald-400">markdown + frontmatter</strong> que ensinam o Claude a usar as ferramentas acima com bom gosto — convenções do framework, armadilhas conhecidas, receitas copy-pasteáveis.</p>
+
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+        <h3 class="text-lg font-semibold mb-4 text-emerald-400">🎒 Skills mais usadas neste curso</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+          <div class="bg-dark-700/50 rounded-lg p-3"><code class="text-emerald-400">/hyperframes</code><p class="text-neutral-400 mt-1">Autoria de composições, legendas, TTS, audio-reactive</p></div>
+          <div class="bg-dark-700/50 rounded-lg p-3"><code class="text-emerald-400">/hyperframes-cli</code><p class="text-neutral-400 mt-1">Comandos: init, add, lint, preview, render, transcribe, tts</p></div>
+          <div class="bg-dark-700/50 rounded-lg p-3"><code class="text-emerald-400">/gsap</code><p class="text-neutral-400 mt-1">Easings, timelines, stagger, ScrollTrigger</p></div>
+          <div class="bg-dark-700/50 rounded-lg p-3"><code class="text-emerald-400">/hyperframes-registry</code><p class="text-neutral-400 mt-1">Instalar blocos/componentes do catálogo</p></div>
+          <div class="bg-dark-700/50 rounded-lg p-3"><code class="text-emerald-400">/make-a-video</code><p class="text-neutral-400 mt-1">Playbook ponta-a-ponta pra iniciantes</p></div>
+          <div class="bg-dark-700/50 rounded-lg p-3"><code class="text-emerald-400">/short-form-video</code><p class="text-neutral-400 mt-1">9:16 talking-head + motion graphics</p></div>
+          <div class="bg-dark-700/50 rounded-lg p-3"><code class="text-emerald-400">/website-to-hyperframes</code><p class="text-neutral-400 mt-1">Captura URL → composição em 7 passos</p></div>
+          <div class="bg-dark-700/50 rounded-lg p-3"><code class="text-emerald-400">/frontend-design</code><p class="text-neutral-400 mt-1">Landing pages, artifacts estáticos</p></div>
+          <div class="bg-dark-700/50 rounded-lg p-3"><code class="text-emerald-400">/theme-factory</code><p class="text-neutral-400 mt-1">10 temas pré-prontos ou gerar um novo</p></div>
+          <div class="bg-dark-700/50 rounded-lg p-3"><code class="text-emerald-400">/brand-guidelines</code><p class="text-neutral-400 mt-1">Sistema de design e tokens de marca</p></div>
+        </div>
+      </div>
+
+      <div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6">
+        <h3 class="text-lg font-semibold text-blue-400 mb-2 flex items-center"><span class="mr-2">💡</span> Skill sem ferramenta é só texto</h3>
+        <p class="text-neutral-300 text-sm">Uma skill bem usada economiza horas. Mas sem o framework por baixo (Hyperframes, FFmpeg, Chromium), a skill <strong>não tem o que executar</strong> — ela é só prompt. Por isso o <code class="bg-dark-700 px-2 py-0.5 rounded text-xs">npm install</code> e o <code class="bg-dark-700 px-2 py-0.5 rounded text-xs">doctor</code> do módulo 1.1 vêm antes.</p>
+      </div>
+    </section>
+
+    <section id="topico-6" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">6</span><h2 class="text-2xl font-bold">🎯 Matriz de decisão — quando usar cada um</h2></div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">O mesmo problema pode caber em ferramentas diferentes. Este guia rápido te economiza tempo.</p>
+
+      <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden mb-6">
+        <table class="w-full text-sm">
+          <thead class="bg-dark-700">
+            <tr>
+              <th class="text-left px-4 py-3 text-emerald-400">Preciso de...</th>
+              <th class="text-left px-4 py-3 text-emerald-400">Ferramenta</th>
+              <th class="text-left px-4 py-3 text-emerald-400">Por quê</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-dark-600">
+            <tr><td class="px-4 py-3 text-neutral-200">Landing page estática, poster, artifact</td><td class="px-4 py-3"><code class="bg-dark-700 px-2 py-0.5 rounded text-emerald-400">/frontend-design</code> ou <code class="bg-dark-700 px-2 py-0.5 rounded text-emerald-400">/canvas-design</code></td><td class="px-4 py-3 text-neutral-400">Sem vídeo, sem timeline — só um HTML/PDF final</td></tr>
+            <tr><td class="px-4 py-3 text-neutral-200">Vídeo promocional 30s, TikTok, Reels</td><td class="px-4 py-3"><strong class="text-emerald-400">Hyperframes</strong> + <code class="bg-dark-700 px-2 py-0.5 rounded text-emerald-400">/hyperframes</code></td><td class="px-4 py-3 text-neutral-400">É o que este workspace faz melhor</td></tr>
+            <tr><td class="px-4 py-3 text-neutral-200">Cortar/re-encodar um MP4 que já tenho</td><td class="px-4 py-3"><strong class="text-emerald-400">FFmpeg</strong> direto no terminal</td><td class="px-4 py-3 text-neutral-400">Uma linha resolve, não precisa framework</td></tr>
+            <tr><td class="px-4 py-3 text-neutral-200">Screenshot de uma cena pra auditar</td><td class="px-4 py-3"><strong class="text-emerald-400">Playwright</strong> + preview rodando</td><td class="px-4 py-3 text-neutral-400">Mais rápido que render draft só pra ver 1 frame</td></tr>
+            <tr><td class="px-4 py-3 text-neutral-200">Meu time é React e quer vídeo programático</td><td class="px-4 py-3"><strong class="text-emerald-400">Remotion</strong> + <code class="bg-dark-700 px-2 py-0.5 rounded text-emerald-400">/remotion</code></td><td class="px-4 py-3 text-neutral-400">Hooks e componentes familiares</td></tr>
+            <tr><td class="px-4 py-3 text-neutral-200">Transformar um site em vídeo</td><td class="px-4 py-3"><code class="bg-dark-700 px-2 py-0.5 rounded text-emerald-400">/website-to-hyperframes</code></td><td class="px-4 py-3 text-neutral-400">Playbook em 7 passos, já otimizado</td></tr>
+            <tr><td class="px-4 py-3 text-neutral-200">Gerar narração pro vídeo sem estúdio</td><td class="px-4 py-3"><code class="bg-dark-700 px-2 py-0.5 rounded text-emerald-400">hyperframes tts</code></td><td class="px-4 py-3 text-neutral-400">Kokoro-82M on-device, sem API key</td></tr>
+            <tr><td class="px-4 py-3 text-neutral-200">Legenda sincronizada palavra-por-palavra</td><td class="px-4 py-3"><code class="bg-dark-700 px-2 py-0.5 rounded text-emerald-400">hyperframes transcribe</code></td><td class="px-4 py-3 text-neutral-400">Whisper embutido, word-level timestamps</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-3 flex items-center"><span class="mr-2">🧭</span> Regra geral</h3>
+        <ol class="space-y-2 text-neutral-300 text-sm list-decimal list-inside">
+          <li>É estático e não muda com o tempo? → <strong>Claude Design / frontend skills</strong></li>
+          <li>Tem timeline e sai como MP4/WebM? → <strong>Hyperframes</strong> (ou Remotion se React)</li>
+          <li>Só preciso mexer no arquivo final de vídeo? → <strong>FFmpeg</strong></li>
+          <li>Preciso inspecionar uma página rodando? → <strong>Playwright</strong></li>
+          <li>Qualquer uma das de cima + bom gosto? → <strong>Skill correspondente</strong></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="mb-12">
+      <div class="bg-gradient-to-br from-emerald-900/40 via-dark-800 to-dark-800 rounded-xl border border-emerald-500/30 p-8">
+        <h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-3">📋</span> Resumo do Módulo</h2>
+        <div class="space-y-4 mb-8">
+          <div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><div><strong class="text-white">FFmpeg</strong><span class="text-neutral-400"> — encodador universal, roda por baixo de tudo</span></div></div>
+          <div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><div><strong class="text-white">Playwright / Puppeteer</strong><span class="text-neutral-400"> — automação de browser; Playwright pra testes, Puppeteer dentro dos frameworks</span></div></div>
+          <div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><div><strong class="text-white">Remotion</strong><span class="text-neutral-400"> — vídeo-como-código em React; alternativa se seu time já vive no ecossistema</span></div></div>
+          <div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><div><strong class="text-white">Hyperframes</strong><span class="text-neutral-400"> — vídeo-como-código em HTML + GSAP; framework deste curso</span></div></div>
+          <div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><div><strong class="text-white">Skills</strong><span class="text-neutral-400"> — prompts empacotados que elevam qualidade; não funcionam sem ferramenta por baixo</span></div></div>
+          <div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><div><strong class="text-white">Matriz de decisão</strong><span class="text-neutral-400"> — sabe em qual camada está trabalhando quando algo quebra</span></div></div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-4 mb-8"><h3 class="font-semibold text-emerald-400 mb-2">Próxima Trilha:</h3><p class="text-neutral-300">Trilha 2 - Produção (Primeiro Vídeo, Deck+Sizzle, Short Vertical)</p></div>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="modulo-1-4.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">← Módulo Anterior</a>
+          <a href="../trilha2/index.html" class="flex-1 text-center px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-500 transition-colors">Próxima Trilha →</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="border-t border-dark-600 py-8 mt-8"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm"><p>Design + Vídeo com IA • 2026</p></div></footer>
+
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+    const html = document.documentElement;
+    if (localStorage.getItem('theme') === 'light' || (!localStorage.getItem('theme') && !html.classList.contains('dark'))) { themeToggleDarkIcon.classList.remove('hidden'); html.classList.remove('dark'); } else { themeToggleLightIcon.classList.remove('hidden'); }
+    themeToggle.addEventListener('click', () => { themeToggleDarkIcon.classList.toggle('hidden'); themeToggleLightIcon.classList.toggle('hidden'); html.classList.toggle('dark'); localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light'); });
+  </script>
+</body>
+</html>

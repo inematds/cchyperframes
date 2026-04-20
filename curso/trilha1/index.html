@@ -97,9 +97,9 @@
         Setup do ambiente, primeira landing page no Claude Design, construção do seu sistema de marca e internalização da filosofia de motion graphics. A base que sustenta tudo depois.
       </p>
       <div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
-        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-emerald-400">4</div><div class="text-xs text-neutral-400">Módulos</div></div>
-        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-emerald-400">24</div><div class="text-xs text-neutral-400">Tópicos</div></div>
-        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-emerald-400">~6h</div><div class="text-xs text-neutral-400">Duração</div></div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-emerald-400">5</div><div class="text-xs text-neutral-400">Módulos</div></div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-emerald-400">30</div><div class="text-xs text-neutral-400">Tópicos</div></div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-emerald-400">~6h30</div><div class="text-xs text-neutral-400">Duração</div></div>
         <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-emerald-400">Básico</div><div class="text-xs text-neutral-400">Nível</div></div>
       </div>
     </div>
@@ -138,6 +138,13 @@
             <span class="text-xs text-neutral-500">~45 min</span>
           </div>
           <h3 class="text-lg font-semibold group-hover:text-emerald-400 transition-colors">📜 MOTION_PHILOSOPHY: a estética do movimento</h3>
+        </a>
+        <a href="modulo-1-5.html" class="group bg-dark-800 rounded-xl border border-dark-600 hover:border-emerald-500/30 p-5 transition-all md:col-span-2">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-emerald-400 font-bold">1.5</span>
+            <span class="text-xs text-neutral-500">~35 min</span>
+          </div>
+          <h3 class="text-lg font-semibold group-hover:text-emerald-400 transition-colors">🧰 Ecossistema: Remotion, Playwright, FFmpeg, Hyperframes e Skills</h3>
         </a>
       </div>
     </section>
@@ -508,6 +515,96 @@
       </div>
     </div>
 
+    <!-- MÓDULO 1.5 -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-emerald-400 font-bold">1.5</span>
+          <span class="text-xs text-neutral-500">~35 min</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2">🧰 Ecossistema: Remotion, Playwright, FFmpeg, Hyperframes e Skills</h3>
+        <p class="text-neutral-400 text-sm">Mapear as camadas do pipeline: encoder, browser headless, frameworks de vídeo-como-código e skills. Saber em qual camada está trabalhando quando algo quebra.</p>
+      </div>
+      <div class="divide-y divide-dark-600">
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
+            <span class="text-lg">🎞️</span>
+            <div><span class="font-medium">FFmpeg — o encodador universal</span><span class="text-neutral-500 text-sm ml-2">- A engrenagem por baixo de tudo</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4"><div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+            <div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">CLI clássica que corta, mixa, converte e encoda áudio/vídeo. Não sabe nada de HTML — só recebe frames + trilhas e monta o container final.</p></div>
+            <div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Todos os frameworks de render (Hyperframes, Remotion) usam FFmpeg no fim. Erros de codec/container vêm dele.</p></div>
+            <div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">libx264, CRF, AAC, container MP4/MOV/WebM, faststart, filter_complex, re-encode, extração de frame.</p></div>
+          </div></div>
+        </div>
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
+            <span class="text-lg">🌐</span>
+            <div><span class="font-medium">Playwright vs Puppeteer</span><span class="text-neutral-500 text-sm ml-2">- Automação de browser</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4"><div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+            <div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Duas bibliotecas pra controlar Chromium via código. Playwright é da Microsoft, focada em testes. Puppeteer é do Google, é o que os frameworks de render usam por baixo.</p></div>
+            <div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Playwright é útil pra screenshotar uma cena do Studio rodando sem pagar render inteiro. Puppeteer você nunca chama direto — o Hyperframes cuida.</p></div>
+            <div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Chromium headless, seletores, auto-waiting, screenshot, virtual time, diferença entre "gravar vídeo" e "render determinístico".</p></div>
+          </div></div>
+        </div>
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
+            <span class="text-lg">⚛️</span>
+            <div><span class="font-medium">Remotion — vídeo em React</span><span class="text-neutral-500 text-sm ml-2">- Alternativa React ao Hyperframes</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4"><div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+            <div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Framework vídeo-como-código em React/TSX. Usa hooks como useCurrentFrame() e renderiza frame a frame via Chromium + FFmpeg.</p></div>
+            <div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Mesmo paradigma do Hyperframes, mas em React. Se seu time vive em Next.js, faz mais sentido do que aprender HTML + GSAP.</p></div>
+            <div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">useCurrentFrame, interpolate, Composition, Sequence, Lambda, paywall comercial, ecossistema React maduro.</p></div>
+          </div></div>
+        </div>
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
+            <span class="text-lg">✨</span>
+            <div><span class="font-medium">Hyperframes — HTML + GSAP</span><span class="text-neutral-500 text-sm ml-2">- O framework deste curso</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4"><div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+            <div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Vídeo-como-código em HTML puro com atributos data-* e uma timeline GSAP por composição. Traz TTS (Kokoro) e transcrição (Whisper) embutidos no CLI.</p></div>
+            <div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">É o menor atrito entre "tenho uma ideia" e "estou renderizando frames". Sem build step, sem paywall, Studio com hot reload.</p></div>
+            <div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">data-start, data-duration, data-track-index, window.__timelines, sub-compositions via template, blocks do registry, MOTION_PHILOSOPHY.</p></div>
+          </div></div>
+        </div>
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span>
+            <span class="text-lg">🧠</span>
+            <div><span class="font-medium">Skills — prompts empacotados</span><span class="text-neutral-500 text-sm ml-2">- Como elevar qualidade</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4"><div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+            <div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Markdown + frontmatter que ensinam o Claude a usar as ferramentas com convenções do framework, armadilhas conhecidas e receitas copy-pasteáveis.</p></div>
+            <div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Uma skill bem invocada economiza horas. Sem a ferramenta por baixo a skill é só texto — por isso o doctor vem antes.</p></div>
+            <div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">/hyperframes, /gsap, /short-form-video, /website-to-hyperframes, /frontend-design, /theme-factory, /brand-guidelines, /remotion.</p></div>
+          </div></div>
+        </div>
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span>
+            <span class="text-lg">🎯</span>
+            <div><span class="font-medium">Matriz de decisão</span><span class="text-neutral-500 text-sm ml-2">- Quando usar cada um</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4"><div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+            <div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Tabela de decisão rápida: pra cada tipo de entregável (landing, promo 30s, corte de MP4, screenshot de cena, etc.) qual ferramenta usar.</p></div>
+            <div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Evita reinventar a roda. Se é estático, Claude Design. Se é vídeo declarativo, Hyperframes. Se é só cortar um MP4, FFmpeg. Saber disso economiza dias.</p></div>
+            <div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Regra geral, entregável estático vs temporal, camada correta para o problema, quando skill é suficiente vs quando precisa da ferramenta direta.</p></div>
+          </div></div>
+        </div>
+      </div>
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <button onclick="openModal('modal-1-5')" class="px-4 py-2 text-sm bg-dark-600 hover:bg-dark-500 rounded-lg transition-colors">Ver em Modal</button>
+        <a href="modulo-1-5.html" class="px-4 py-2 text-sm bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg transition-colors">Ver Completo</a>
+      </div>
+    </div>
+
     <!-- NAVEGAÇÃO ENTRE TRILHAS -->
     <div class="flex flex-col sm:flex-row gap-4 mt-12">
       <a href="../../index.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">← Voltar para Início</a>
@@ -551,6 +648,15 @@
         <button onclick="closeModal()" class="text-neutral-400 hover:text-white text-2xl leading-none">&times;</button>
       </div>
       <iframe src="modulo-1-4.html" class="flex-1 w-full rounded-b-xl"></iframe>
+    </div>
+  </div>
+  <div id="modal-1-5" class="modal hidden fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/80" onclick="if(event.target === this) closeModal()">
+    <div class="bg-dark-800 rounded-xl w-full max-w-6xl h-[95vh] flex flex-col border border-dark-600">
+      <div class="p-4 border-b border-dark-600 flex justify-between items-center flex-shrink-0">
+        <div class="flex items-center space-x-3"><span class="text-emerald-400 font-bold">1.5</span><span class="font-semibold">Ecossistema: Remotion, Playwright, FFmpeg, Hyperframes e Skills</span></div>
+        <button onclick="closeModal()" class="text-neutral-400 hover:text-white text-2xl leading-none">&times;</button>
+      </div>
+      <iframe src="modulo-1-5.html" class="flex-1 w-full rounded-b-xl"></iframe>
     </div>
   </div>
 

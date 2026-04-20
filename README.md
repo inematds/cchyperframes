@@ -259,6 +259,44 @@ editar → lint → preview (Studio, ao vivo) → render draft → verificar fra
 5. **Escolha um projeto genérico** (`claude-edit-intro` é um bom começo). Abra `index.html`, `final.mp4` lado a lado, e a pasta `compositions/`. Leia, varra, modifique, re-renderize.
 6. **Depois abra um projeto AIS** — você terá o vocabulário para ver quão longe eles empurram o framework.
 
+## Ecossistema: quem é quem
+
+Antes de mergulhar nas trilhas, vale entender a stack completa. São ferramentas em **camadas diferentes**, não concorrentes:
+
+### Motores de base (rodam por baixo de tudo)
+
+| Ferramenta | Camada | Para que serve |
+|---|---|---|
+| **FFmpeg** | Encoding | CLI clássica pra cortar/misturar/encodar áudio e vídeo. Não sabe nada de HTML — só pega frames + áudio e monta o MP4 final. É a engrenagem que todos os outros usam no fim. |
+| **Chromium / Puppeteer** | Browser headless | O Chrome sem janela, controlado por código. Renderiza o HTML frame a frame. Remotion e Hyperframes usam por baixo. |
+| **Playwright** | Automação de browser | Primo do Puppeteer voltado pra **testes e scraping**. Dá pra tirar screenshot e gravar vídeo, mas não é feito pra render determinístico de motion-graphics (sem frame-rate fixo, sem sync de áudio). |
+
+### Frameworks de vídeo-como-código
+
+| Framework | Linguagem | Quando faz sentido |
+|---|---|---|
+| **Hyperframes** (este repo) | HTML + GSAP | Composições declarativas com `data-start`/`data-duration` e um timeline GSAP por cena. TTS (Kokoro) + transcrição (Whisper) já vêm no CLI. Sem paywall — da HeyGen. Studio com hot reload. |
+| **Remotion** | React (TSX) | Vídeo escrito em componentes com `useCurrentFrame()`. Ecossistema React maduro. Tem paywall comercial acima de certa escala. |
+| Motion Canvas / Revideo | TypeScript imperativo | Alternativas para quem quer timelines imperativas (`yield* tween`). |
+
+Ambos os frameworks fazem a mesma coisa por baixo: **abrem Chromium, capturam frame a frame, passam pro FFmpeg**. A diferença está na **superfície de autoria** (HTML vs JSX) e no ecossistema de blocos prontos.
+
+### Skills (slash commands do Claude Code)
+
+Não são motores de render — são **prompts empacotados** que ensinam o Claude a usar as ferramentas acima com bom gosto:
+
+- `/hyperframes`, `/hyperframes-cli`, `/hyperframes-registry` — autoria e CLI deste framework
+- `/gsap` — easings, timelines, stagger, ScrollTrigger
+- `/remotion` — equivalente para o ecossistema React
+- `/make-a-video`, `/short-form-video`, `/website-to-hyperframes` — playbooks ponta-a-ponta (entrevista → storyboard → render)
+- `/frontend-design`, `/canvas-design`, `/theme-factory`, `/brand-guidelines` — estética de páginas, posteres e artifacts estáticos
+
+Skills não existem sem as ferramentas subjacentes. Uma skill `/hyperframes` bem usada economiza horas; sem o framework por baixo, é só texto.
+
+### Resumo em uma frase
+
+A stack deste workspace é **Hyperframes → Chromium → FFmpeg**, com as skills guiando as decisões estéticas e de pipeline. Se você viesse do React, trocaria só a camada do meio por **Remotion**.
+
 ## Usando Claude Code com este repositório
 
 A pasta `.claude/skills/` traz um conjunto de slash commands que encodam padrões específicos do framework (registro `window.__timelines`, semântica de atributos `data-*`, CSS compatível com shader). Se você usa o [Claude Code](https://claude.com/claude-code), eles ativam automaticamente:
