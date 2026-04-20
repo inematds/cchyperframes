@@ -157,6 +157,26 @@
         </div>
       </div>
 
+      <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+        <div class="flex items-start space-x-4">
+          <div class="text-4xl">🧭</div>
+          <div class="flex-1">
+            <h3 class="text-lg font-semibold text-emerald-400 mb-2">Skill <code class="bg-dark-700 px-2 py-0.5 rounded">/agent-browser</code> — captura sem escrever código</h3>
+            <p class="text-neutral-300 text-sm mb-3">Quando você só quer <strong>"abre essa página, clica naquele botão e me devolve um screenshot"</strong>, não precisa abrir um arquivo Playwright nem decorar API. A skill <code class="bg-dark-700 px-2 py-0.5 rounded text-xs">/agent-browser</code> do Claude Code automatiza navegação, preenchimento de formulário, screenshot e extração de dados em <strong>linguagem natural</strong> — Claude orquestra Playwright/Puppeteer por baixo.</p>
+            <div class="bg-dark-900/60 rounded-lg p-4 border border-dark-700 mb-3">
+              <p class="text-xs text-neutral-500 mb-2">Exemplo de invocação no Claude Code:</p>
+              <pre class="text-xs text-emerald-300"><code>/agent-browser
+
+Abre http://localhost:3002/?comp=cena-3, dá seek pra
+t=4.5s no timeline, tira screenshot da viewport e salva
+em renders/audit/cena-3-t45.png. Confere se o texto
+"INEMA.CLUB" tá visível no centro da tela.</code></pre>
+            </div>
+            <p class="text-neutral-400 text-xs">Quando usar: auditar uma cena rodando no Studio, capturar prints pra HANDOFF, validar visual de uma landing antes de render. Quando NÃO usar: render de vídeo final (use Hyperframes) ou suíte de testes versionada (escreva Playwright direto).</p>
+          </div>
+        </div>
+      </div>
+
       <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
         <h3 class="text-lg font-semibold mb-4 text-emerald-400">📦 Exemplo prático de Playwright</h3>
         <p class="text-sm text-neutral-400 mb-2">Tirar screenshot do Studio rodando ao vivo, num timestamp específico — útil pra testar uma cena sem pagar render inteiro:</p>
@@ -285,6 +305,7 @@ export const FadeInTitle = () =&gt; {
           <div class="bg-dark-700/50 rounded-lg p-3"><code class="text-emerald-400">/make-a-video</code><p class="text-neutral-400 mt-1">Playbook ponta-a-ponta pra iniciantes</p></div>
           <div class="bg-dark-700/50 rounded-lg p-3"><code class="text-emerald-400">/short-form-video</code><p class="text-neutral-400 mt-1">9:16 talking-head + motion graphics</p></div>
           <div class="bg-dark-700/50 rounded-lg p-3"><code class="text-emerald-400">/website-to-hyperframes</code><p class="text-neutral-400 mt-1">Captura URL → composição em 7 passos</p></div>
+          <div class="bg-dark-700/50 rounded-lg p-3"><code class="text-emerald-400">/agent-browser</code><p class="text-neutral-400 mt-1">Navegar, screenshotar e extrair dados de páginas em linguagem natural</p></div>
           <div class="bg-dark-700/50 rounded-lg p-3"><code class="text-emerald-400">/frontend-design</code><p class="text-neutral-400 mt-1">Landing pages, artifacts estáticos</p></div>
           <div class="bg-dark-700/50 rounded-lg p-3"><code class="text-emerald-400">/theme-factory</code><p class="text-neutral-400 mt-1">10 temas pré-prontos ou gerar um novo</p></div>
           <div class="bg-dark-700/50 rounded-lg p-3"><code class="text-emerald-400">/brand-guidelines</code><p class="text-neutral-400 mt-1">Sistema de design e tokens de marca</p></div>
