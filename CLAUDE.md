@@ -127,6 +127,21 @@ The CLI reads `hyperframes.json`/`meta.json` from the current directory and reso
 - Shared raw-recording stash: large source MP4s/MP3s that aren't yet assigned to a project (e.g. raw lesson recordings, license-free music) can sit at root until they're moved into a project's `assets/`
 - Tooling: `node_modules/`, `package.json`, `.claude/`, `.gitignore`, `skills-lock.json`
 
+## ARM64 hosts (Grace Hopper / Jetson / Apple-silicon Linux)
+
+**Symptom:** `npx hyperframes render` dies immediately on every worker with
+`chrome-headless-shell: Syntax error: word unexpected` / `exec format error`.
+**Cause:** Hyperframes caches `chrome-for-testing` under `~/.cache/hyperframes/chrome/chrome-headless-shell/linux_arm-<ver>/chrome-headless-shell-linux64/…` but the downloaded binary is x86_64 ELF — `chrome-for-testing` doesn't publish ARM64 builds, and puppeteer's detection picks the wrong variant. `uname -m` reports `aarch64`; `file` on the cached binary reports `x86-64`. `--docker` also fails because the default image is `linux/amd64` and `qemu-user-static` isn't registered for binfmt.
+**Fix (confirmed working 2026-04-19 on this workspace):** Replace the cached binary with a native aarch64 Chromium. Playwright's cache usually has one already — check `~/.cache/ms-playwright/chromium-*/chrome-linux/chrome` with `file`. Back up the broken binary and symlink the native one on top:
+
+```bash
+BROKEN=~/.cache/hyperframes/chrome/chrome-headless-shell/linux_arm-131.0.6778.85/chrome-headless-shell-linux64/chrome-headless-shell
+mv "$BROKEN" "${BROKEN}.x64.bak"
+ln -s ~/.cache/ms-playwright/chromium-1208/chrome-linux/chrome "$BROKEN"
+```
+
+`PUPPETEER_EXECUTABLE_PATH` does **not** work — Hyperframes ignores it and always resolves from the cache path above, so the symlink is the actual fix. If Playwright isn't installed, `npx playwright install chromium` grabs the arm64 build; otherwise `sudo snap install chromium` also produces a native binary you can point to. The version number in the cache path may change with `hyperframes` upgrades — re-apply the symlink after each upgrade.
+
 ## Render Contract (the must-dos and must-not-dos)
 
 1. Root `<div>` needs `id`, `data-composition-id`, `data-start="0"`, `data-width`, `data-height`.
